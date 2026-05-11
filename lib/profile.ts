@@ -1,7 +1,7 @@
 // Central profile data — edit these values to update content site-wide.
 export const profile = {
-  name: "Yanamala Sree Hari",
-  shortName: "Sree Hari",
+  name: "Yanamala SreeHari",
+  shortName: "SreeHari",
   initials: "YSH",
   title: "Software Developer · Data Science & Machine Learning",
   tagline:
