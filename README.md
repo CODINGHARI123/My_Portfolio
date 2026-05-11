@@ -1,4 +1,4 @@
-# Yanamala Sree Hari — Portfolio
+# Yanamala SreeHari — Portfolio
 
 A modern, responsive portfolio site built with Next.js 14 (App Router), TypeScript, and Tailwind CSS. Production-ready and zero-config deploy to Vercel.
 
