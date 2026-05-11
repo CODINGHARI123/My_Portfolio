@@ -21,13 +21,13 @@ const siteUrl = "https://yanamala-sree-hari.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Yanamala Sree Hari — Software Developer · Data Science & ML",
-    template: "%s | Yanamala Sree Hari",
+    default: "Yanamala SreeHari — Software Developer · Data Science & ML",
+    template: "%s | Yanamala SreeHari",
   },
   description:
-    "Portfolio of Yanamala Sree Hari — Software Developer at Bixbi Systems with a Data Science background in Python, NLP, Deep Learning, PySpark, SQL, Power BI, and Tableau.",
+    "Portfolio of Yanamala SreeHari — Software Developer at Bixbi Systems with a Data Science background in Python, NLP, Deep Learning, PySpark, SQL, Power BI, and Tableau.",
   keywords: [
-    "Yanamala Sree Hari",
+    "Yanamala SreeHari",
     "Software Developer",
     "Data Scientist",
     "Machine Learning Engineer",
@@ -40,20 +40,20 @@ export const metadata: Metadata = {
     "Tableau",
     "Portfolio",
   ],
-  authors: [{ name: "Yanamala Sree Hari" }],
-  creator: "Yanamala Sree Hari",
+  authors: [{ name: "Yanamala SreeHari" }],
+  creator: "Yanamala SreeHari",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    title: "Yanamala Sree Hari — Software Developer · Data Science & ML",
+    title: "Yanamala SreeHari — Software Developer · Data Science & ML",
     description:
       "Software Developer with a Data Science background — Python, ML, NLP, PySpark, SQL, Power BI, and Tableau.",
-    siteName: "Yanamala Sree Hari",
+    siteName: "Yanamala SreeHari",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yanamala Sree Hari — Software Developer · Data Science & ML",
+    title: "Yanamala SreeHari — Software Developer · Data Science & ML",
     description:
       "Software Developer + Data Science. Python, ML, NLP, PySpark, Power BI, Tableau.",
   },
