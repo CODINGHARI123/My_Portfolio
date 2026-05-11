@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import CursorSpotlight from "@/components/effects/CursorSpotlight";
+import SectionNav from "@/components/effects/SectionNav";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,13 +21,14 @@ const siteUrl = "https://yanamala-sree-hari.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Yanamala Sree Hari — Data Scientist & ML Engineer",
+    default: "Yanamala Sree Hari — Software Developer · Data Science & ML",
     template: "%s | Yanamala Sree Hari",
   },
   description:
-    "Portfolio of Yanamala Sree Hari — Data Scientist and Machine Learning Engineer specializing in Python, NLP, Deep Learning, PySpark, SQL, Power BI, and Tableau.",
+    "Portfolio of Yanamala Sree Hari — Software Developer at Bixbi Systems with a Data Science background in Python, NLP, Deep Learning, PySpark, SQL, Power BI, and Tableau.",
   keywords: [
     "Yanamala Sree Hari",
+    "Software Developer",
     "Data Scientist",
     "Machine Learning Engineer",
     "Data Analyst",
@@ -43,16 +46,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    title: "Yanamala Sree Hari — Data Scientist & ML Engineer",
+    title: "Yanamala Sree Hari — Software Developer · Data Science & ML",
     description:
-      "Data Scientist and ML Engineer focused on turning data into insight: Python, NLP, Deep Learning, PySpark, SQL, Power BI, Tableau.",
+      "Software Developer with a Data Science background — Python, ML, NLP, PySpark, SQL, Power BI, and Tableau.",
     siteName: "Yanamala Sree Hari",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yanamala Sree Hari — Data Scientist & ML Engineer",
+    title: "Yanamala Sree Hari — Software Developer · Data Science & ML",
     description:
-      "Data Scientist and ML Engineer specializing in Python, NLP, Deep Learning, PySpark, and Data Visualization.",
+      "Software Developer + Data Science. Python, ML, NLP, PySpark, Power BI, Tableau.",
   },
   robots: {
     index: true,
@@ -61,7 +64,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0f1f",
+  themeColor: "#070b18",
   width: "device-width",
   initialScale: 1,
 };
@@ -69,7 +72,16 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrains.variable}`}>
-      <body>{children}</body>
+      <body className="relative">
+        {/* Decorative dot grid behind everything */}
+        <div
+          aria-hidden
+          className="dot-grid pointer-events-none fixed inset-0 z-0"
+        />
+        <CursorSpotlight />
+        <SectionNav />
+        <div className="relative z-10">{children}</div>
+      </body>
     </html>
   );
 }

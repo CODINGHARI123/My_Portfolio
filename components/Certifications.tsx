@@ -1,21 +1,22 @@
 import { profile } from "@/lib/profile";
+import Reveal from "@/components/effects/Reveal";
 
 export default function Certifications() {
   return (
-    <section id="training" className="section">
+    <section id="training" className="section bg-surface/30">
       <div className="container-content">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="section-eyebrow">Training</p>
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <p className="section-eyebrow">// training</p>
           <h2 className="mt-3 section-title">Internships & coursework</h2>
           <p className="mt-4 text-muted">
             Hands-on training programs that have shaped my data and engineering
             fundamentals.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {profile.training.map((t) => (
-            <article key={t.title} className="card p-6">
+          {profile.training.map((t, i) => (
+            <Reveal key={t.title} delay={i * 120} as="article" className="card p-6">
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">
                 {t.period}
               </p>
@@ -24,7 +25,7 @@ export default function Certifications() {
               <p className="mt-4 text-sm leading-relaxed text-muted">
                 {t.description}
               </p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>

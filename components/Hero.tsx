@@ -1,56 +1,117 @@
 import { profile } from "@/lib/profile";
+import NeuralBackground from "@/components/effects/NeuralBackground";
+import GlitchText from "@/components/effects/GlitchText";
+import RotatingTitle from "@/components/effects/RotatingTitle";
+import Marquee from "@/components/effects/Marquee";
+
+const ROLES = [
+  "Software Developer",
+  "Data Scientist",
+  "Machine Learning Engineer",
+  "NLP Practitioner",
+  "Data Analyst",
+];
+
+const MARQUEE_ITEMS = [
+  "Python",
+  "Machine Learning",
+  "NLP",
+  "Scikit-learn",
+  "PySpark",
+  "Hadoop",
+  "Hive",
+  "Power BI",
+  "Tableau",
+  "Django",
+  "Flask",
+  "REST APIs",
+  "MySQL",
+  "PostgreSQL",
+  "Android Studio",
+  "Linux",
+];
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
-      {/* Decorative blobs */}
+    <section
+      id="top"
+      className="relative isolate overflow-hidden pt-32 pb-12 sm:pt-40 sm:pb-16"
+    >
+      {/* Layered backdrop */}
+      <NeuralBackground />
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-primary/25 blur-3xl animate-blob"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/30 via-background/40 to-background"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute right-0 top-1/3 h-80 w-80 rounded-full bg-accent/20 blur-3xl animate-blob"
+        className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl animate-blob"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-1/3 h-80 w-80 rounded-full bg-accent/15 blur-3xl animate-blob"
         style={{ animationDelay: "3s" }}
       />
 
       <div className="container-content relative">
         <div className="mx-auto max-w-3xl text-center">
-          <p
-            className="section-eyebrow opacity-0 animate-fade-in"
+          {/* Status badge */}
+          <div
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.22em] text-muted opacity-0 animate-fade-in backdrop-blur"
             style={{ animationDelay: "60ms" }}
           >
-            Hello, I&apos;m
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+            </span>
+            Available for work
+          </div>
+
+          <p
+            className="mt-6 section-eyebrow opacity-0 animate-fade-in"
+            style={{ animationDelay: "180ms" }}
+          >
+            &gt; init portfolio --user sree_hari
           </p>
 
           <h1
-            className="mt-4 text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl opacity-0 animate-fade-up"
-            style={{ animationDelay: "180ms" }}
+            className="mt-4 font-mono text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl opacity-0 animate-fade-up"
+            style={{ animationDelay: "260ms" }}
           >
-            <span className="text-gradient">{profile.name}</span>
+            <span className="text-gradient">
+              <GlitchText text={profile.name} duration={1600} />
+            </span>
           </h1>
 
           <h2
-            className="mt-4 text-xl font-medium text-muted sm:text-2xl opacity-0 animate-fade-up"
-            style={{ animationDelay: "320ms" }}
+            className="mt-6 min-h-[2.5rem] text-xl font-medium text-muted sm:text-2xl opacity-0 animate-fade-up"
+            style={{ animationDelay: "520ms" }}
           >
-            {profile.title}
+            <span className="text-muted">I am a </span>
+            <RotatingTitle phrases={ROLES} />
           </h2>
 
           <p
-            className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg opacity-0 animate-fade-up"
-            style={{ animationDelay: "460ms" }}
+            className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-muted sm:text-lg opacity-0 animate-fade-up"
+            style={{ animationDelay: "680ms" }}
           >
             {profile.tagline}
           </p>
 
           <div
             className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row opacity-0 animate-fade-up"
-            style={{ animationDelay: "600ms" }}
+            style={{ animationDelay: "820ms" }}
           >
             <a href="#contact" className="btn-primary">
               Contact Me
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
             </a>
@@ -67,21 +128,28 @@ export default function Hero() {
             </a>
           </div>
 
+          {/* Scroll cue */}
           <div
-            className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs uppercase tracking-[0.18em] text-muted opacity-0 animate-fade-in"
-            style={{ animationDelay: "820ms" }}
+            className="mt-16 flex justify-center opacity-0 animate-fade-in"
+            style={{ animationDelay: "1100ms" }}
           >
-            <span>Python</span>
-            <span className="text-border">/</span>
-            <span>Machine Learning</span>
-            <span className="text-border">/</span>
-            <span>NLP</span>
-            <span className="text-border">/</span>
-            <span>Flask · Django</span>
-            <span className="text-border">/</span>
-            <span>Power BI</span>
+            <a
+              href="#about"
+              aria-label="Scroll to about"
+              className="group flex flex-col items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-muted transition hover:text-primary"
+            >
+              Scroll
+              <span className="grid h-9 w-5 place-items-start rounded-full border border-border p-1 transition group-hover:border-primary">
+                <span className="h-1.5 w-1 animate-bounce rounded-full bg-primary/80" />
+              </span>
+            </a>
           </div>
         </div>
+      </div>
+
+      {/* Tech marquee — full bleed under hero */}
+      <div className="relative mt-16 border-y border-border/70 bg-surface/40 py-5 backdrop-blur-sm">
+        <Marquee items={MARQUEE_ITEMS} />
       </div>
     </section>
   );

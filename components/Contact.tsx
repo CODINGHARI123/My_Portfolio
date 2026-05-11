@@ -1,4 +1,6 @@
 import { profile } from "@/lib/profile";
+import Reveal from "@/components/effects/Reveal";
+import TiltCard from "@/components/effects/TiltCard";
 
 const channels = [
   {
@@ -6,7 +8,14 @@ const channels = [
     value: profile.email,
     href: `mailto:${profile.email}`,
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      >
         <rect x="3" y="5" width="18" height="14" rx="2" />
         <path d="m3 7 9 6 9-6" />
       </svg>
@@ -37,7 +46,14 @@ const channels = [
     value: profile.phone,
     href: `tel:${profile.phone.replace(/\s/g, "")}`,
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      >
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.1 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92Z" />
       </svg>
     ),
@@ -48,8 +64,8 @@ export default function Contact() {
   return (
     <section id="contact" className="section">
       <div className="container-content">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="section-eyebrow">Contact</p>
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <p className="section-eyebrow">// contact</p>
           <h2 className="mt-3 section-title">Let&apos;s build something together</h2>
           <p className="mt-4 text-muted">
             I&apos;m open to roles, collaborations, and conversations around software
@@ -70,29 +86,32 @@ export default function Contact() {
               Connect on LinkedIn
             </a>
           </div>
-        </div>
+        </Reveal>
 
         <div className="mx-auto mt-14 grid max-w-4xl gap-4 sm:grid-cols-2">
-          {channels.map((c) => (
-            <a
-              key={c.label}
-              href={c.href}
-              target={c.href.startsWith("http") ? "_blank" : undefined}
-              rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="card flex items-center gap-4 p-5"
-            >
-              <span className="grid h-11 w-11 place-items-center rounded-lg bg-primary/15 text-primary">
-                {c.icon}
-              </span>
-              <span className="min-w-0">
-                <span className="block text-xs uppercase tracking-[0.18em] text-muted">
-                  {c.label}
-                </span>
-                <span className="mt-1 block truncate text-sm font-medium text-text">
-                  {c.value}
-                </span>
-              </span>
-            </a>
+          {channels.map((c, i) => (
+            <Reveal key={c.label} delay={i * 100}>
+              <TiltCard className="h-full" maxTilt={6}>
+                <a
+                  href={c.href}
+                  target={c.href.startsWith("http") ? "_blank" : undefined}
+                  rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="card flex items-center gap-4 p-5"
+                >
+                  <span className="grid h-11 w-11 place-items-center rounded-lg bg-primary/15 text-primary">
+                    {c.icon}
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-xs uppercase tracking-[0.18em] text-muted">
+                      {c.label}
+                    </span>
+                    <span className="mt-1 block truncate text-sm font-medium text-text">
+                      {c.value}
+                    </span>
+                  </span>
+                </a>
+              </TiltCard>
+            </Reveal>
           ))}
         </div>
       </div>

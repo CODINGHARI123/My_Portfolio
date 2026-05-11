@@ -9,18 +9,35 @@
 
   body {
     @apply bg-background text-text antialiased;
-    background-image: radial-gradient(
-        circle at 12% 18%,
-        rgba(56, 189, 248, 0.08),
-        transparent 45%
-      ),
-      radial-gradient(circle at 88% 78%, rgba(167, 139, 250, 0.07), transparent 50%);
+    background-image:
+      radial-gradient(circle at 14% 18%, rgba(56, 189, 248, 0.10), transparent 45%),
+      radial-gradient(circle at 86% 78%, rgba(167, 139, 250, 0.10), transparent 50%),
+      linear-gradient(180deg, #060a17 0%, #070b18 50%, #060a17 100%);
     background-attachment: fixed;
+    cursor: none;
+  }
+
+  /* Cursor:none only on fine pointers (mouse). Touch & coarse keep default. */
+  @media (pointer: coarse) {
+    body {
+      cursor: auto;
+    }
   }
 
   ::selection {
-    background: rgba(56, 189, 248, 0.25);
+    background: rgba(56, 189, 248, 0.28);
     color: #f8fafc;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
@@ -38,31 +55,95 @@
   }
 
   .section-eyebrow {
-    @apply text-sm font-medium uppercase tracking-[0.2em] text-primary;
+    @apply text-xs font-mono uppercase tracking-[0.32em] text-primary;
   }
 
   .card {
-    @apply rounded-2xl border border-border bg-surface/70 backdrop-blur-sm transition duration-300 hover:border-primary/60 hover:bg-surface;
+    @apply relative rounded-2xl border border-border bg-surface/60 backdrop-blur-sm transition duration-300;
+  }
+  .card:hover {
+    border-color: rgba(56, 189, 248, 0.55);
+    background: rgba(13, 20, 42, 0.85);
   }
 
   .chip {
-    @apply inline-flex items-center rounded-full border border-border bg-surfaceAlt/60 px-3 py-1 text-xs font-medium text-muted transition hover:border-primary/60 hover:text-primary;
+    @apply inline-flex items-center rounded-full border border-border bg-surfaceAlt/60 px-3 py-1 text-xs font-medium text-muted transition;
+  }
+  .chip:hover {
+    color: theme("colors.primary");
+    border-color: rgba(56, 189, 248, 0.6);
+    box-shadow: 0 0 18px -6px rgba(56, 189, 248, 0.55);
   }
 
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-primaryDark hover:text-white focus:outline-none focus:ring-2 focus:ring-primary/60;
+    box-shadow: 0 8px 28px -10px rgba(56, 189, 248, 0.7);
   }
 
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-text transition hover:border-primary/60 hover:text-primary;
   }
+
+  /* Scroll-reveal primitive — works with components/effects/Reveal.tsx */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 60%, #f0abfc 100%);
+    background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 55%, #f472b6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  .text-gradient-soft {
+    background: linear-gradient(135deg, #e0f2fe 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Decorative dot grid — combined with cursor spotlight on body */
+  .dot-grid {
+    background-image: radial-gradient(rgba(148, 163, 184, 0.18) 1px, transparent 1px);
+    background-size: 26px 26px;
+    background-position: 0 0;
+    mask-image: radial-gradient(circle at center, black 30%, transparent 75%);
+  }
+
+  /* Spotlight overlay driven by --mx/--my CSS vars from CursorSpotlight */
+  .cursor-spotlight {
+    background: radial-gradient(
+      400px circle at var(--mx, 50%) var(--my, 30%),
+      rgba(56, 189, 248, 0.14),
+      transparent 70%
+    );
+    transition: background 0.12s linear;
+  }
+
+  /* Shimmer underline used on links/labels */
+  .shimmer {
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(56, 189, 248, 0.55) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
   }
 }
