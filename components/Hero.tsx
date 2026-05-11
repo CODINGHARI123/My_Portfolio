@@ -8,7 +8,7 @@ const ROLES = [
   "Software Developer",
   "Data Scientist",
   "Machine Learning Engineer",
-  "NLP Practitioner",
+  "Full Stack Engineer",
   "Data Analyst",
 ];
 
