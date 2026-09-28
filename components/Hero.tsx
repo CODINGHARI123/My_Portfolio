@@ -3,7 +3,7 @@ import RotatingTitle from "@/components/effects/RotatingTitle";
 import Marquee from "@/components/effects/Marquee";
 import CountUp from "@/components/effects/CountUp";
 import CodeWindow from "@/components/effects/CodeWindow";
-import { Activity, ArrowRight, Github, Linkedin, Mail } from "@/components/Icons";
+import { Activity, ArrowRight, Download, Github, Linkedin, Mail } from "@/components/Icons";
 
 const ROLES = [
   "Software Developer",
@@ -111,8 +111,9 @@ export default function Hero() {
               Explore my work
               <ArrowRight size={16} />
             </a>
-            <a href="#contact" className="btn-ghost">
-              Contact
+            <a href={profile.links.resume} download="Yanamala_SreeHari_Resume.pdf" className="btn-ghost group">
+              <Download size={16} />
+              Download CV
             </a>
             <div className="ml-1 flex items-center gap-1">
               {[

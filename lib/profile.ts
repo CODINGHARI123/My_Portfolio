@@ -5,7 +5,7 @@ export const profile = {
   initials: "YSH",
   title: "Software Developer · Data Science & Machine Learning",
   tagline:
-    "Software Developer at Bixbi Systems building cross-platform network diagnostic tools, with a strong foundation in machine learning, NLP, and data analytics.",
+    "Software Developer at MakeMyTechnology building cross-platform network diagnostic tools, with a strong foundation in machine learning, NLP, and data analytics.",
   location: "Bangalore, India",
   email: "yanamalasreehari916@gmail.com",
   phone: "+91 81065 98703",
@@ -13,9 +13,11 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/yanamala-sree-hari",
     github: "https://github.com/CODINGHARI123",
     email: "mailto:yanamalasreehari916@gmail.com",
+    // Relative path so it resolves under the GitHub Pages sub-path (/My_Portfolio/).
+    resume: "SreeHari_Resume.pdf",
   },
   about: [
-    "I'm a Software Developer at Bixbi Systems (Bangalore), where I work on COTS — a cross-platform network diagnostic tool comparable to QXDM. I built the mobile APK from scratch and the Windows installer, and shipped features for real-time RF monitoring, iPerf-based speed testing, and ping-based connectivity checks.",
+    "I'm a Software Developer at MakeMyTechnology (Bangalore), where I work on COTS — a cross-platform network diagnostic tool comparable to QXDM. I built the mobile APK from scratch and the Windows installer, and shipped features for real-time RF monitoring, iPerf-based speed testing, and ping-based connectivity checks.",
     "I'm a B.Tech graduate in Computer Science & Engineering from Lovely Professional University (CGPA 7.83) with a deep interest in data. Outside of my day job I build ML and analytics projects — sentiment models, recommendation systems, and Power BI dashboards — using Python, Scikit-learn, NLP, and visualization tooling.",
     "I'm comfortable across the stack: shipping production software, designing data pipelines, and turning datasets into clear, decision-ready insights.",
   ],
@@ -56,29 +58,29 @@ export const profile = {
   ],
   experience: [
     {
-      company: "Bixbi Systems",
+      company: "MakeMyTechnology",
       role: "Software Developer",
       period: "Dec 2025 — Present",
       location: "Bangalore, India",
       bullets: [
-        "Contributing to COTS — a Network Diagnostic Tool comparable in functionality to QXDM — for real-time network monitoring.",
-        "Built the mobile APK from scratch to enable on-the-go monitoring, and developed the Windows installer for laptop-based deployment.",
-        "Implemented real-time network health features: RF parameter monitoring (signal strength), iPerf-based data speed testing, and ping-based connectivity stability checks.",
-        "Ensured cross-platform accessibility so field engineers can use the tool effectively across mobile and desktop environments.",
+        "Engineered a cross-platform network monitoring and diagnostic tool (COTS) analogous to QXDM, enabling field engineers to diagnose real-time network issues across mobile and desktop environments.",
+        "Developed the Android APK from scratch using Android Studio, delivering on-the-go RF parameter monitoring, iPerf-based data speed testing, and ping-based connectivity diagnostics for field use.",
+        "Designed and packaged the Windows installer, streamlining laptop-based deployment and reducing setup time for field engineering teams.",
+        "Integrated real-time signal strength tracking, network health dashboards, and automated diagnostic workflows, improving visibility into network performance across deployment sites.",
       ],
-      tags: ["Mobile (APK)", "Windows Installer", "RF / Signal", "iPerf", "Ping"],
+      tags: ["Android Studio", "Windows Installer", "RF / Signal", "iPerf", "Ping"],
     },
     {
-      company: "Bixbi Systems",
+      company: "MakeMyTechnology",
       role: "Software Developer Intern",
       period: "Sept 2025 — Nov 2025",
       location: "Bangalore, India",
       bullets: [
-        "Assisted in the development and testing of network diagnostic features as part of the COTS tool initiative.",
-        "Collaborated with the development team on integrating platform-specific components and contributed to internal tooling and operational workflows.",
-        "Gained hands-on experience with network diagnostics, cross-platform development, and real-world software deployment pipelines.",
+        "Assisted in architecting and testing network diagnostic modules for the COTS platform, supporting the core development team in delivering production-ready features.",
+        "Integrated platform-specific components across Android and Windows environments, ensuring consistent behavior and reliability across both deployment targets.",
+        "Collaborated with cross-functional teams to streamline internal tooling and operational workflows, accelerating development velocity during the internship period.",
       ],
-      tags: ["Testing", "Cross-platform", "Internal Tooling"],
+      tags: ["Android", "Windows", "Testing", "Internal Tooling"],
     },
   ],
   projects: [
@@ -86,8 +88,8 @@ export const profile = {
       title: "COTS — Network Diagnostic Tool",
       label: "Professional Work",
       visual: "network",
-      period: "Bixbi Systems · 2025",
-      stack: ["Python", "Android APK", "Windows Installer", "iPerf"],
+      period: "MakeMyTechnology · 2025",
+      stack: ["Python", "Android Studio", "APK", "Windows Installer", "iPerf"],
       description:
         "A specialized network monitoring and diagnostic tool comparable in functionality to QXDM, designed for field engineers. Built the mobile APK from scratch and the Windows installer for seamless laptop deployment. Implemented real-time RF parameter tracking, iPerf-based data speed measurement, and ping-based connectivity stability testing — all engineered to work across mobile and desktop platforms.",
     },

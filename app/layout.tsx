@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     template: "%s | Yanamala SreeHari",
   },
   description:
-    "Portfolio of Yanamala SreeHari — Software Developer at Bixbi Systems with a Data Science background in Python, NLP, Deep Learning, PySpark, SQL, Power BI, and Tableau.",
+    "Portfolio of Yanamala SreeHari — Software Developer at MakeMyTechnology with a Data Science background in Python, NLP, Deep Learning, PySpark, SQL, Power BI, and Tableau.",
   keywords: [
     "Yanamala SreeHari",
     "Software Developer",

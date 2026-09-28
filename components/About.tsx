@@ -65,7 +65,7 @@ export default function About() {
             </p>
             <p className="relative mt-3 font-display text-2xl font-semibold leading-snug">
               Software Developer at{" "}
-              <span className="font-serif font-normal italic text-accent">Bixbi Systems</span>
+              <span className="font-serif font-normal italic text-accent">MakeMyTechnology</span>
             </p>
             <p className="relative mt-4 inline-flex items-center gap-1.5 text-sm text-white/60">
               <MapPin size={14} /> {profile.location}

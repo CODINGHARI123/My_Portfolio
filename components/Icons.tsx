@@ -139,3 +139,13 @@ export const Linkedin = ({ size = 16, className }: P) => (
     <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05a4.17 4.17 0 0 1 3.75-2.06c4 0 4.74 2.63 4.74 6.05V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21h-4V9Z" />
   </svg>
 );
+
+export const Download = ({ size = 16, className }: P) => (
+  <svg {...stroke(size, className)}>
+    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+    <g className="transition-transform duration-300 group-hover:translate-y-0.5 group-hover:animate-bounce">
+      <path d="M12 3v12" />
+      <path d="m7 10 5 5 5-5" />
+    </g>
+  </svg>
+);

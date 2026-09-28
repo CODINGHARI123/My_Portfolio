@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { profile } from "@/lib/profile";
-import { ArrowUpRight } from "@/components/Icons";
+import { ArrowUpRight, Download } from "@/components/Icons";
 import ThemeToggle from "@/components/effects/ThemeToggle";
 
 const links = [
@@ -86,6 +86,16 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
+          <a
+            href={profile.links.resume}
+            download="Yanamala_SreeHari_Resume.pdf"
+            aria-label="Download resume"
+            title="Download resume"
+            className="group hidden h-10 items-center gap-2 rounded-full border border-border bg-surface px-4 text-sm font-semibold text-text transition duration-300 hover:border-primary hover:text-primary sm:inline-flex"
+          >
+            <Download size={15} />
+            <span className="hidden xl:inline">Resume</span>
+          </a>
           <a href="#contact" className="btn-primary hidden !py-2.5 lg:inline-flex">
             Let&apos;s talk
             <ArrowUpRight size={15} />
@@ -121,6 +131,17 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href={profile.links.resume}
+              download="Yanamala_SreeHari_Resume.pdf"
+              onClick={() => setOpen(false)}
+              className="group mt-1 flex items-center gap-2 rounded-2xl bg-ink px-4 py-2.5 text-sm font-semibold text-white"
+            >
+              <Download size={15} />
+              Download resume
+            </a>
+          </li>
         </ul>
       </div>
     </header>

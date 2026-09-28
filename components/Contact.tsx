@@ -1,6 +1,6 @@
 import { profile } from "@/lib/profile";
 import Reveal from "@/components/effects/Reveal";
-import { ArrowUpRight, Github, Linkedin, Mail, Phone } from "@/components/Icons";
+import { ArrowUpRight, Download, Github, Linkedin, Mail, Phone } from "@/components/Icons";
 
 const channels = [
   { label: "Email", value: profile.email, href: `mailto:${profile.email}`, icon: Mail },
@@ -48,7 +48,7 @@ export default function Contact() {
                   Open to roles and collaborations in software engineering, machine learning
                   and data analytics. My inbox is always open.
                 </p>
-                <div className="mt-9 flex items-center gap-6">
+                <div className="mt-9 flex flex-wrap items-center gap-4">
                   <a
                     href={`mailto:${profile.email}`}
                     className="group inline-flex items-center gap-3 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-semibold text-ink transition duration-300 hover:bg-accent"
@@ -58,7 +58,15 @@ export default function Contact() {
                       <ArrowUpRight size={16} />
                     </span>
                   </a>
-                  <div aria-hidden className="relative hidden h-24 w-24 flex-shrink-0 sm:block">
+                  <a
+                    href={profile.links.resume}
+                    download="Yanamala_SreeHari_Resume.pdf"
+                    className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-3.5 text-sm font-semibold text-white transition duration-300 hover:border-accent hover:text-accent"
+                  >
+                    <Download size={16} />
+                    Resume
+                  </a>
+                  <div aria-hidden className="relative ml-2 hidden h-24 w-24 flex-shrink-0 sm:block">
                     <svg viewBox="0 0 100 100" className="h-full w-full animate-spin-slow">
                       <defs>
                         <path id="circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />

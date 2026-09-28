@@ -10,7 +10,7 @@ const LINES: Seg[][] = [
   [],
   [["class", "text-rose-300"], [" SreeHari", "text-amber-300"], ["(Developer):", "text-slate-200"]],
   [["    role ", "text-slate-200"], ["= ", "text-teal-300"], ['"Software Developer"', "text-emerald-300"]],
-  [["    company ", "text-slate-200"], ["= ", "text-teal-300"], ['"Bixbi Systems"', "text-emerald-300"]],
+  [["    company ", "text-slate-200"], ["= ", "text-teal-300"], ['"MakeMyTechnology"', "text-emerald-300"]],
   [["    stack ", "text-slate-200"], ["= ", "text-teal-300"], ["[", "text-slate-400"], ['"Python"', "text-emerald-300"], [", ", "text-slate-400"], ['"SQL"', "text-emerald-300"], [", ", "text-slate-400"], ['"NLP"', "text-emerald-300"], ["]", "text-slate-400"]],
   [],
   [["    def ", "text-rose-300"], ["solve", "text-sky-300"], ["(self, problem):", "text-slate-200"]],
