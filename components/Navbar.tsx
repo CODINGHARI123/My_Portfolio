@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { profile } from "@/lib/profile";
 import { ArrowUpRight } from "@/components/Icons";
+import ThemeToggle from "@/components/effects/ThemeToggle";
 
 const links = [
   { href: "#about", label: "About" },
@@ -46,7 +47,7 @@ export default function Navbar() {
       <nav
         className={`mx-auto flex max-w-5xl items-center justify-between rounded-full border px-3 py-2 transition-all duration-500 ${
           scrolled
-            ? "border-border bg-white/80 shadow-lift backdrop-blur-xl"
+            ? "border-border bg-surface/80 shadow-lift backdrop-blur-xl"
             : "border-transparent bg-transparent"
         }`}
       >
@@ -83,12 +84,14 @@ export default function Navbar() {
           })}
         </ul>
 
-        <a href="#contact" className="btn-primary hidden !py-2.5 lg:inline-flex">
-          Let&apos;s talk
-          <ArrowUpRight size={15} />
-        </a>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <a href="#contact" className="btn-primary hidden !py-2.5 lg:inline-flex">
+            Let&apos;s talk
+            <ArrowUpRight size={15} />
+          </a>
 
-        <button
+          <button
           aria-label="Toggle menu"
           aria-expanded={open}
           className="grid h-10 w-10 place-items-center rounded-full bg-ink text-white lg:hidden"
@@ -97,11 +100,12 @@ export default function Navbar() {
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             {open ? <path d="M18 6 6 18M6 6l12 12" /> : <path d="M4 8h16M8 16h12" />}
           </svg>
-        </button>
+          </button>
+        </div>
       </nav>
 
       <div
-        className={`mx-auto mt-2 max-w-5xl overflow-hidden rounded-3xl border bg-white/95 shadow-lift backdrop-blur-xl transition-all duration-500 lg:hidden ${
+        className={`mx-auto mt-2 max-w-5xl overflow-hidden rounded-3xl border bg-surface/95 shadow-lift backdrop-blur-xl transition-all duration-500 lg:hidden ${
           open ? "max-h-96 border-border opacity-100" : "max-h-0 border-transparent opacity-0"
         }`}
       >

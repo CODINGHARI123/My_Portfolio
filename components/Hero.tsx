@@ -53,11 +53,11 @@ export default function Hero() {
       <div aria-hidden className="dot-bg pointer-events-none absolute inset-0 -z-10" />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-32 top-10 -z-10 h-[34rem] w-[34rem] bg-gradient-to-br from-teal-200/60 to-emerald-100/40 blur-3xl animate-morph"
+        className="pointer-events-none absolute -right-32 top-10 -z-10 h-[34rem] w-[34rem] bg-gradient-to-br from-teal-200/60 to-emerald-100/40 blur-3xl dark:from-teal-500/20 dark:to-emerald-900/10 animate-morph"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-40 bottom-0 -z-10 h-[26rem] w-[26rem] bg-gradient-to-tr from-amber-200/50 to-orange-100/30 blur-3xl animate-morph"
+        className="pointer-events-none absolute -left-40 bottom-0 -z-10 h-[26rem] w-[26rem] bg-gradient-to-tr from-amber-200/50 to-orange-100/30 blur-3xl dark:from-amber-500/10 dark:to-orange-900/10 animate-morph"
         style={{ animationDelay: "-6s" }}
       />
 
@@ -178,7 +178,7 @@ export default function Hero() {
           </div>
 
           <div className="glass absolute -bottom-16 left-2 z-30 flex items-center gap-3 rounded-2xl border border-border px-4 py-3 shadow-lift animate-float sm:-left-10">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent/20 text-amber-700">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent/20 text-amber-700 dark:text-amber-300">
               <Activity size={18} />
             </span>
             <div>

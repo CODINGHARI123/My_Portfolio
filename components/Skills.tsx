@@ -46,7 +46,7 @@ export default function Skills() {
                   onMouseEnter={() => setActive(i)}
                   className={`group relative flex flex-shrink-0 items-center gap-3 overflow-hidden rounded-2xl border px-4 py-3.5 text-left text-sm font-semibold transition-all duration-500 ${
                     isActive
-                      ? "border-ink bg-ink text-white shadow-lift"
+                      ? "border-ink bg-ink text-white shadow-lift dark:border-primary/50"
                       : "border-border bg-surface text-text hover:border-primary/40"
                   }`}
                 >

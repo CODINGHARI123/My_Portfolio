@@ -35,7 +35,7 @@ export default function Education() {
                         <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">
                           {edu.period}
                         </p>
-                        <span className="rounded-full bg-accent/15 px-2.5 py-0.5 text-[11px] font-semibold text-amber-700">
+                        <span className="rounded-full bg-accent/15 px-2.5 py-0.5 text-[11px] font-semibold text-amber-700 dark:text-amber-300">
                           {edu.detail.split(":")[0]}
                         </span>
                       </div>

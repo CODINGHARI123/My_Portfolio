@@ -19,7 +19,7 @@ export default function Contact() {
     <section id="contact" className="section overflow-hidden">
       <div className="container-content">
         <Reveal variant="curtain">
-          <div className="relative isolate overflow-hidden rounded-[2.5rem] bg-ink px-6 py-14 text-white sm:px-12 sm:py-20 lg:px-16">
+          <div className="relative isolate overflow-hidden rounded-[2.5rem] bg-ink px-6 dark:border dark:border-border py-14 text-white sm:px-12 sm:py-20 lg:px-16">
             <div
               aria-hidden
               className="absolute -right-24 -top-24 -z-10 h-[28rem] w-[28rem] bg-primary/50 blur-3xl animate-morph"
@@ -29,20 +29,6 @@ export default function Contact() {
               className="absolute -bottom-32 left-1/3 -z-10 h-80 w-80 bg-accent/25 blur-3xl animate-morph"
               style={{ animationDelay: "-5s" }}
             />
-            {/* Rotating text badge */}
-            <div aria-hidden className="absolute right-8 top-8 hidden h-28 w-28 lg:block">
-              <svg viewBox="0 0 100 100" className="h-full w-full animate-spin-slow">
-                <defs>
-                  <path id="circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
-                </defs>
-                <text className="fill-white/60 font-mono text-[9.5px] uppercase tracking-[0.3em]">
-                  <textPath href="#circle">open to work • open to work • </textPath>
-                </text>
-              </svg>
-              <span className="absolute inset-0 m-auto grid h-10 w-10 place-items-center rounded-full bg-accent text-ink">
-                <ArrowUpRight size={18} />
-              </span>
-            </div>
 
             <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-end">
               <div>
@@ -62,15 +48,28 @@ export default function Contact() {
                   Open to roles and collaborations in software engineering, machine learning
                   and data analytics. My inbox is always open.
                 </p>
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="group mt-9 inline-flex items-center gap-3 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-semibold text-ink transition duration-300 hover:bg-accent"
-                >
-                  Say hello
-                  <span className="grid h-10 w-10 place-items-center rounded-full bg-ink text-white transition-transform duration-500 group-hover:rotate-45">
-                    <ArrowUpRight size={16} />
-                  </span>
-                </a>
+                <div className="mt-9 flex items-center gap-6">
+                  <a
+                    href={`mailto:${profile.email}`}
+                    className="group inline-flex items-center gap-3 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-semibold text-ink transition duration-300 hover:bg-accent"
+                  >
+                    Say hello
+                    <span className="grid h-10 w-10 place-items-center rounded-full bg-ink text-white transition-transform duration-500 group-hover:rotate-45">
+                      <ArrowUpRight size={16} />
+                    </span>
+                  </a>
+                  <div aria-hidden className="relative hidden h-24 w-24 flex-shrink-0 sm:block">
+                    <svg viewBox="0 0 100 100" className="h-full w-full animate-spin-slow">
+                      <defs>
+                        <path id="circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
+                      </defs>
+                      <text className="fill-white/60 font-mono text-[9.5px] uppercase tracking-[0.3em]">
+                        <textPath href="#circle">open to work • open to work • </textPath>
+                      </text>
+                    </svg>
+                    <span className="absolute inset-0 m-auto h-3 w-3 animate-pulse rounded-full bg-accent" />
+                  </div>
+                </div>
               </div>
 
               <ul className="space-y-3">

@@ -75,7 +75,7 @@ export default function About() {
           <Reveal
             delay={220}
             variant="zoom"
-            className="rounded-3xl bg-gradient-to-br from-primary to-teal-500 p-8 text-white lg:col-span-2"
+            className="rounded-3xl bg-gradient-to-br from-teal-700 to-teal-500 p-8 text-white lg:col-span-2"
           >
             <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-white/70">
               Education

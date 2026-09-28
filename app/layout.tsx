@@ -30,6 +30,9 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
+// Runs before first paint so a saved (or system) dark preference never flashes light.
+const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.classList.add("dark")}catch(e){}})()`;
+
 const siteUrl = "https://codinghari123.github.io/My_Portfolio";
 
 export const metadata: Metadata = {
@@ -78,7 +81,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#faf8f4",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#faf8f4" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0d12" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -88,7 +94,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       className={`${jakarta.variable} ${sora.variable} ${serif.variable} ${jetbrains.variable}`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="relative overflow-x-hidden">
         <div aria-hidden className="noise pointer-events-none fixed inset-0 z-[80]" />
         <ScrollProgress />

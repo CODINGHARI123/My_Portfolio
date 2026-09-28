@@ -22,7 +22,7 @@ function Visual({ kind }: { kind: string }) {
           { k: "iPerf DL", v: "142 Mbps", w: "88%" },
           { k: "Ping", v: "24 ms", w: "35%" },
         ].map((m, i) => (
-          <div key={m.k} className="rounded-xl bg-white p-3 shadow-soft">
+          <div key={m.k} className="rounded-xl bg-surface p-3 shadow-soft">
             <div className="flex justify-between text-xs">
               <span className="text-muted">{m.k}</span>
               <span className="font-semibold text-text">{m.v}</span>
@@ -66,7 +66,7 @@ function Visual({ kind }: { kind: string }) {
         ].map((r, i) => (
           <div
             key={r.s}
-            className="rounded-xl bg-white p-3 shadow-soft animate-fade-up"
+            className="rounded-xl bg-surface p-3 shadow-soft animate-fade-up"
             style={{ animationDelay: `${i * 250}ms` }}
           >
             <p className="text-xs italic text-muted">{r.t}</p>
@@ -92,7 +92,7 @@ function Visual({ kind }: { kind: string }) {
             ["Temp", "21°C"],
             ["Rain", "203mm"],
           ].map(([k, v]) => (
-            <div key={k} className="rounded-lg bg-white px-2 py-2 shadow-soft">
+            <div key={k} className="rounded-lg bg-surface px-2 py-2 shadow-soft">
               <p className="text-[10px] uppercase tracking-wider text-muted">{k}</p>
               <p className="text-sm font-bold text-text">{v}</p>
             </div>
@@ -115,13 +115,13 @@ function Visual({ kind }: { kind: string }) {
           ["Total Sales", "$1.20M"],
           ["Avg Rating", "3.9 ★"],
         ].map(([k, v]) => (
-          <div key={k} className="rounded-xl bg-white p-3 shadow-soft">
+          <div key={k} className="rounded-xl bg-surface p-3 shadow-soft">
             <p className="text-[10px] uppercase tracking-wider text-muted">{k}</p>
             <p className="font-display text-lg font-bold text-text">{v}</p>
           </div>
         ))}
       </div>
-      <div className="flex h-28 items-end gap-2 rounded-xl bg-white p-3 shadow-soft">
+      <div className="flex h-28 items-end gap-2 rounded-xl bg-surface p-3 shadow-soft">
         {[55, 80, 45, 95, 65, 70, 40].map((h, i) => (
           <span
             key={i}

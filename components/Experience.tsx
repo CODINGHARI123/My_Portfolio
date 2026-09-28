@@ -6,7 +6,7 @@ import { ArrowUpRight, MapPin } from "@/components/Icons";
 // Dark section: sticky header on the left, timeline entries on the right.
 export default function Experience() {
   return (
-    <section id="experience" className="section relative overflow-hidden bg-ink text-white">
+    <section id="experience" className="section relative overflow-hidden bg-ink text-white dark:border-y dark:border-border">
       <div
         aria-hidden
         className="pointer-events-none absolute -left-40 top-20 h-96 w-96 bg-primary/30 blur-3xl animate-morph"

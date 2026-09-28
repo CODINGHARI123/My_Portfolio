@@ -1,21 +1,23 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      // Theme tokens are CSS variables (see globals.css) so light/dark swap in one place.
       colors: {
-        background: "#faf8f4",
-        surface: "#ffffff",
-        surfaceAlt: "#f3efe7",
-        border: "#e8e2d6",
-        ink: "#10151c",
-        primary: "#0f766e",
-        primaryDark: "#115e59",
+        background: "rgb(var(--c-bg) / <alpha-value>)",
+        surface: "rgb(var(--c-surface) / <alpha-value>)",
+        surfaceAlt: "rgb(var(--c-surface-alt) / <alpha-value>)",
+        border: "rgb(var(--c-border) / <alpha-value>)",
+        ink: "rgb(var(--c-ink) / <alpha-value>)",
+        primary: "rgb(var(--c-primary) / <alpha-value>)",
+        primaryDark: "rgb(var(--c-primary-dark) / <alpha-value>)",
         accent: "#f59e0b",
         accent2: "#e76f51",
-        text: "#14171f",
-        muted: "#5f6470",
+        text: "rgb(var(--c-text) / <alpha-value>)",
+        muted: "rgb(var(--c-muted) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["var(--font-jakarta)", "system-ui", "sans-serif"],

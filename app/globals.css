@@ -3,6 +3,34 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --c-bg: 250 248 244;
+    --c-surface: 255 255 255;
+    --c-surface-alt: 243 239 231;
+    --c-border: 232 226 214;
+    --c-ink: 16 21 28;
+    --c-text: 20 23 31;
+    --c-muted: 95 100 112;
+    --c-primary: 15 118 110;
+    --c-primary-dark: 17 94 89;
+    --c-dot: 20 23 31;
+    color-scheme: light;
+  }
+
+  .dark {
+    --c-bg: 10 13 18;
+    --c-surface: 19 24 32;
+    --c-surface-alt: 14 18 25;
+    --c-border: 36 43 54;
+    --c-ink: 25 32 42;
+    --c-text: 236 233 226;
+    --c-muted: 152 160 172;
+    --c-primary: 45 212 191;
+    --c-primary-dark: 94 234 212;
+    --c-dot: 236 233 226;
+    color-scheme: dark;
+  }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
@@ -10,6 +38,7 @@
 
   body {
     @apply bg-background font-sans text-text antialiased;
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 
   h1,
@@ -22,6 +51,13 @@
   ::selection {
     background: rgba(245, 158, 11, 0.3);
     color: #14171f;
+  }
+
+  /* Theme switch: ThemeToggle animates the new snapshot itself */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -64,7 +100,7 @@
 
   .card {
     @apply relative rounded-3xl border border-border bg-surface transition duration-500;
-    box-shadow: 0 1px 2px rgba(20, 23, 31, 0.03), 0 12px 32px -18px rgba(20, 23, 31, 0.14);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 12px 32px -18px rgba(0, 0, 0, 0.18);
   }
   .card-hover:hover {
     @apply -translate-y-1.5 border-primary/30 shadow-lift;
@@ -95,6 +131,13 @@
   .btn-primary:hover::before {
     transform: scaleX(1);
   }
+  /* On a dark page the ink button would vanish, so it turns teal with an amber sweep */
+  .dark .btn-primary {
+    @apply bg-primary text-ink;
+  }
+  .dark .btn-primary::before {
+    background: linear-gradient(110deg, #f59e0b, #fbbf24);
+  }
 
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 rounded-full border border-text/15 bg-transparent px-6 py-3 text-sm font-semibold text-text transition duration-300 hover:-translate-y-0.5 hover:border-primary hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2;
@@ -104,7 +147,7 @@
     @apply grid h-12 w-12 flex-shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary transition duration-500;
   }
   .group:hover .icon-tile {
-    @apply bg-primary text-white;
+    @apply bg-primary text-white dark:text-ink;
   }
 
   /* Scroll-reveal primitive — works with components/effects/Reveal.tsx */
@@ -136,7 +179,7 @@
     inset: -2px;
     z-index: 30;
     border-radius: inherit;
-    background: #faf8f4;
+    background: rgb(var(--c-bg));
     transform-origin: top;
     transition: transform 1.2s cubic-bezier(0.77, 0, 0.18, 1);
     pointer-events: none;
@@ -166,7 +209,7 @@
   }
 
   .dot-bg {
-    background-image: radial-gradient(rgba(20, 23, 31, 0.12) 1px, transparent 1px);
+    background-image: radial-gradient(rgb(var(--c-dot) / 0.12) 1px, transparent 1px);
     background-size: 22px 22px;
     mask-image: radial-gradient(ellipse at 60% 40%, black 15%, transparent 70%);
   }
@@ -176,7 +219,7 @@
   }
 
   .glass {
-    background: rgba(255, 255, 255, 0.75);
+    background: rgb(var(--c-surface) / 0.75);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
   }
