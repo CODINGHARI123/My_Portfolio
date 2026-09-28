@@ -2,8 +2,8 @@ import { profile } from "@/lib/profile";
 import RotatingTitle from "@/components/effects/RotatingTitle";
 import Marquee from "@/components/effects/Marquee";
 import CountUp from "@/components/effects/CountUp";
-import TiltCard from "@/components/effects/TiltCard";
-import { Activity, ArrowRight, Brain, Github, Mail, MapPin } from "@/components/Icons";
+import CodeWindow from "@/components/effects/CodeWindow";
+import { Activity, ArrowRight, Github, Linkedin, Mail } from "@/components/Icons";
 
 const ROLES = [
   "Software Developer",
@@ -33,230 +33,165 @@ const MARQUEE_ITEMS = [
 ];
 
 const STATS = [
-  { to: 1, suffix: "+", label: "Years Experience" },
-  { to: 4, suffix: "", label: "Projects Built" },
+  { to: 1, suffix: "+", label: "Years in industry" },
+  { to: 4, suffix: "", label: "Shipped projects" },
   { to: 7.83, suffix: "", decimals: 2, label: "B.Tech CGPA" },
 ];
 
+// Tech badges orbiting the code window.
+const ORBIT = [
+  { label: "Python", r: "16.5rem", delay: "0s" },
+  { label: "SQL", r: "16.5rem", delay: "-5.5s" },
+  { label: "NLP", r: "16.5rem", delay: "-11s" },
+  { label: "Power BI", r: "16.5rem", delay: "-16.5s" },
+];
+
 export default function Hero() {
-  const [first, ...rest] = profile.name.split(" ");
-
   return (
-    <section id="top" className="relative isolate overflow-hidden pt-28 sm:pt-32 lg:pt-36">
-      {/* Backdrop: grid + soft gradient blobs */}
-      <div aria-hidden className="grid-bg pointer-events-none absolute inset-0 -z-10" />
+    <section id="top" className="relative isolate overflow-hidden pt-32 sm:pt-36 lg:pt-40">
+      {/* Backdrop: dotted field + morphing colour blobs */}
+      <div aria-hidden className="dot-bg pointer-events-none absolute inset-0 -z-10" />
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-40 top-24 -z-10 h-[26rem] w-[26rem] rounded-full bg-accent/15 blur-3xl animate-blob"
+        className="pointer-events-none absolute -right-32 top-10 -z-10 h-[34rem] w-[34rem] bg-gradient-to-br from-teal-200/60 to-emerald-100/40 blur-3xl animate-morph"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-24 -top-24 -z-10 h-[30rem] w-[30rem] rounded-full bg-primary/15 blur-3xl animate-blob"
-        style={{ animationDelay: "4s" }}
+        className="pointer-events-none absolute -left-40 bottom-0 -z-10 h-[26rem] w-[26rem] bg-gradient-to-tr from-amber-200/50 to-orange-100/30 blur-3xl animate-morph"
+        style={{ animationDelay: "-6s" }}
       />
 
-      {/* Floating decorations */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 hidden md:block">
-        <div className="glass-cube absolute left-[40%] top-24 h-16 w-16 rounded-xl animate-float-rotate" />
-        <div
-          className="glass-cube absolute left-[6%] top-[62%] h-10 w-10 rounded-lg animate-float-rotate"
-          style={{ animationDelay: "2s" }}
-        />
-        <div className="absolute right-[8%] top-28 h-20 w-20 rounded-full border-[5px] border-accent/30 animate-float" />
-        <div
-          className="absolute right-[18%] bottom-40 h-5 w-5 rounded-full bg-gradient-to-br from-primary/60 to-accent/60 animate-float"
-          style={{ animationDelay: "1.5s" }}
-        />
-        <span className="absolute left-[30%] top-[30%] font-mono text-2xl font-bold text-primary/20 animate-float">
-          &lt;/&gt;
-        </span>
-        <span
-          className="absolute left-[33%] top-[70%] font-mono text-2xl font-bold text-accent/30 animate-float"
-          style={{ animationDelay: "2.5s" }}
-        >
-          {"{ }"}
-        </span>
-        <span
-          className="absolute right-[42%] bottom-24 font-mono text-xl font-bold text-primary/20 animate-float"
-          style={{ animationDelay: "1s" }}
-        >
-          ( )
-        </span>
-      </div>
-
-      <div className="container-content grid items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
+      <div className="container-content grid items-center gap-16 lg:grid-cols-[1.1fr_1fr]">
         {/* Left column — intro */}
         <div>
           <div
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs font-medium text-text shadow-soft animate-fade-in"
+            className="inline-flex items-center gap-3 rounded-full border border-border bg-surface/80 py-1 pl-1 pr-4 text-xs font-medium text-text backdrop-blur animate-fade-in"
             style={{ animationDelay: "60ms" }}
           >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            <span className="flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
+              Available
             </span>
-            Open to opportunities · {profile.location.split(",")[0]}
+            Open to new roles · {profile.location.split(",")[0]}
           </div>
 
           <h1
-            className="mt-6 font-display text-[2.6rem] font-bold leading-[1.05] tracking-tight text-text sm:text-6xl lg:text-[4.25rem] animate-fade-up"
+            className="mt-7 font-display text-[2.7rem] font-semibold leading-[1.02] tracking-tight text-text sm:text-6xl lg:text-7xl animate-fade-up"
             style={{ animationDelay: "160ms" }}
           >
-            Hi, I&apos;m <span className="text-gradient">{first}</span>
+            Yanamala
             <br />
-            <span className="text-gradient">{rest.join(" ")}</span>
+            <span className="font-serif font-normal italic text-primary">SreeHari</span>
+            <span className="text-accent">.</span>
           </h1>
 
           <p
-            className="mt-6 flex min-h-[2.25rem] flex-wrap items-baseline gap-x-3 font-display text-xl font-semibold sm:text-2xl animate-fade-up"
-            style={{ animationDelay: "320ms" }}
+            className="mt-6 flex min-h-[2.25rem] flex-wrap items-baseline gap-x-3 font-display text-xl font-medium sm:text-2xl animate-fade-up"
+            style={{ animationDelay: "300ms" }}
           >
-            <span className="text-sm font-medium text-muted">I&apos;m a</span>
+            <span className="font-mono text-sm text-muted">~/</span>
             <RotatingTitle phrases={ROLES} />
           </p>
 
           <p
-            className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg animate-fade-up"
-            style={{ animationDelay: "440ms" }}
+            className="mt-5 max-w-lg text-base leading-relaxed text-muted sm:text-lg animate-fade-up"
+            style={{ animationDelay: "420ms" }}
           >
-            I build <strong className="font-semibold text-text">production software</strong>{" "}
-            and <strong className="font-semibold text-text">data-driven systems</strong> —
-            from cross-platform network diagnostic tools to ML models, NLP pipelines, and
+            I turn <span className="marker font-semibold text-text">raw data</span> and{" "}
+            <span className="marker font-semibold text-text">real-world problems</span> into
+            shipped software — from cross-platform network diagnostic tools to ML models and
             analytics dashboards.
           </p>
 
           <div
-            className="mt-8 flex flex-wrap gap-3 animate-fade-up"
-            style={{ animationDelay: "560ms" }}
+            className="mt-9 flex flex-wrap items-center gap-3 animate-fade-up"
+            style={{ animationDelay: "540ms" }}
           >
             <a href="#projects" className="btn-primary">
-              View My Work
+              Explore my work
               <ArrowRight size={16} />
             </a>
             <a href="#contact" className="btn-ghost">
-              Get in Touch
-              <Mail size={16} />
+              Contact
             </a>
-            <a
-              href={profile.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost"
-            >
-              <Github size={16} />
-              GitHub
-            </a>
+            <div className="ml-1 flex items-center gap-1">
+              {[
+                { href: profile.links.github, icon: Github, label: "GitHub" },
+                { href: profile.links.linkedin, icon: Linkedin, label: "LinkedIn" },
+                { href: profile.links.email, icon: Mail, label: "Email" },
+              ].map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="grid h-11 w-11 place-items-center rounded-full text-muted transition duration-300 hover:-translate-y-1 hover:bg-ink hover:text-white"
+                >
+                  <s.icon size={17} />
+                </a>
+              ))}
+            </div>
           </div>
 
           <dl
-            className="mt-10 flex flex-wrap gap-x-10 gap-y-4 animate-fade-up"
-            style={{ animationDelay: "680ms" }}
+            className="mt-12 grid max-w-md grid-cols-3 divide-x divide-border border-y border-border animate-fade-up"
+            style={{ animationDelay: "660ms" }}
           >
             {STATS.map((s) => (
-              <div key={s.label}>
+              <div key={s.label} className="px-4 py-4 first:pl-0">
                 <dt className="sr-only">{s.label}</dt>
-                <dd className="font-display text-3xl font-bold text-gradient">
+                <dd className="font-display text-3xl font-semibold text-text">
                   <CountUp to={s.to} suffix={s.suffix} decimals={s.decimals} />
                 </dd>
-                <p className="mt-1 text-xs font-medium text-muted">{s.label}</p>
+                <p className="mt-1 text-xs text-muted">{s.label}</p>
               </div>
             ))}
           </dl>
         </div>
 
-        {/* Right column — profile card */}
-        <div className="relative mx-auto w-full max-w-md animate-scale-in" style={{ animationDelay: "300ms" }}>
-          {/* Floating badges */}
-          <div className="glass absolute -left-4 -top-6 z-20 flex items-center gap-2 rounded-xl border border-border px-3 py-2 text-xs font-semibold text-text shadow-lift animate-float sm:-left-10">
-            <Activity size={14} className="text-primary" />
-            Real-time
-          </div>
-          <div
-            className="glass absolute -bottom-5 -right-3 z-20 flex items-center gap-2 rounded-xl border border-border px-3 py-2 text-xs font-semibold text-text shadow-lift animate-float sm:-right-8"
-            style={{ animationDelay: "2s" }}
-          >
-            <Brain size={14} className="text-accent" />
-            ML &amp; NLP
-          </div>
-
-          {/* Rotating dashed ring behind card */}
+        {/* Right column — live code window with orbiting badges */}
+        <div
+          className="relative mx-auto w-full max-w-lg animate-scale-in"
+          style={{ animationDelay: "300ms" }}
+        >
           <div
             aria-hidden
-            className="absolute -inset-6 -z-10 rounded-[2rem] border-2 border-dashed border-primary/15 animate-spin-slow"
-            style={{ animationDuration: "60s" }}
+            className="absolute left-1/2 top-1/2 -z-10 h-[33rem] w-[33rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-primary/20"
           />
+          <div aria-hidden className="absolute left-1/2 top-1/2 z-20 hidden h-0 w-0 md:block">
+            {ORBIT.map((o) => (
+              <span
+                key={o.label}
+                className="absolute -ml-10 -mt-4 flex w-20 justify-center animate-orbit"
+                style={{ ["--r" as string]: o.r, animationDelay: o.delay }}
+              >
+                <span className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-semibold text-text shadow-lift">
+                  {o.label}
+                </span>
+              </span>
+            ))}
+          </div>
 
-          <TiltCard maxTilt={7}>
-            <div className="card gradient-border overflow-hidden p-7 shadow-lift">
-              <div
-                aria-hidden
-                className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 blur-2xl"
-              />
-              <div className="relative grid h-[4.5rem] w-[4.5rem] place-items-center rounded-2xl bg-gradient-to-br from-primary to-accent font-display text-2xl font-bold text-white shadow-glow">
-                {profile.initials}
-                <span className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full border-[3px] border-white bg-emerald-500" />
-              </div>
+          <div className="rotate-[-2deg] transition-transform duration-700 hover:rotate-0">
+            <CodeWindow />
+          </div>
 
-              <h3 className="mt-5 font-display text-xl font-bold text-text">{profile.name}</h3>
-              <p className="mt-1 text-sm font-semibold text-primary">
-                Software Developer @ Bixbi Systems
-              </p>
-
-              <div className="my-5 h-px bg-border" />
-
-              <ul className="space-y-3 text-sm text-muted">
-                <li className="flex items-center gap-2.5">
-                  <MapPin size={16} className="text-accent" />
-                  {profile.location}
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <Mail size={16} className="text-accent" />
-                  <a href={profile.links.email} className="truncate hover:text-primary">
-                    {profile.email}
-                  </a>
-                </li>
-              </ul>
-
-              {/* Mini live-signal visual */}
-              <div className="mt-5 flex h-12 items-end gap-1 rounded-xl bg-surfaceAlt p-2">
-                {[40, 65, 50, 80, 55, 90, 70, 45, 85, 60, 75, 95, 50, 70].map((h, i) => (
-                  <span
-                    key={i}
-                    className="flex-1 origin-bottom rounded-sm bg-gradient-to-t from-primary to-accent animate-bar-grow"
-                    style={{ height: `${h}%`, animationDelay: `${i * 90}ms` }}
-                  />
-                ))}
-              </div>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {["Python", "SQL", "Django", "NLP"].map((t) => (
-                  <span key={t} className="chip">
-                    {t}
-                  </span>
-                ))}
-              </div>
+          <div className="glass absolute -bottom-16 left-2 z-30 flex items-center gap-3 rounded-2xl border border-border px-4 py-3 shadow-lift animate-float sm:-left-10">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent/20 text-amber-700">
+              <Activity size={18} />
+            </span>
+            <div>
+              <p className="text-xs font-bold text-text">Currently building</p>
+              <p className="text-[11px] text-muted">COTS network diagnostics</p>
             </div>
-          </TiltCard>
+          </div>
         </div>
       </div>
 
-      {/* Scroll cue */}
-      <div className="mt-16 flex justify-center animate-fade-in" style={{ animationDelay: "1000ms" }}>
-        <a
-          href="#about"
-          aria-label="Scroll to about"
-          className="group flex flex-col items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-muted transition hover:text-primary"
-        >
-          Scroll
-          <span className="grid h-9 w-5 place-items-start rounded-full border-2 border-border p-1 transition group-hover:border-primary">
-            <span className="h-1.5 w-1 animate-bounce rounded-full bg-primary" />
-          </span>
-        </a>
-      </div>
-
-      {/* Tech marquee */}
-      <div className="relative mt-12 border-y border-border bg-surface py-5">
-        <Marquee items={MARQUEE_ITEMS} />
+      {/* Tech marquee — tilted ribbon */}
+      <div className="relative mt-28 -rotate-1 bg-ink py-4 sm:mt-32">
+        <Marquee items={MARQUEE_ITEMS} dark />
       </div>
     </section>
   );

@@ -47,8 +47,8 @@ function Visual({ kind }: { kind: string }) {
           />
           <defs>
             <linearGradient id="lg1" x1="0" x2="1">
-              <stop offset="0" stopColor="#2563eb" />
-              <stop offset="1" stopColor="#06b6d4" />
+              <stop offset="0" stopColor="#0f766e" />
+              <stop offset="1" stopColor="#f59e0b" />
             </linearGradient>
           </defs>
         </svg>
@@ -98,7 +98,7 @@ function Visual({ kind }: { kind: string }) {
             </div>
           ))}
         </div>
-        <div className="rounded-xl bg-gradient-to-br from-primary to-accent p-4 text-white shadow-glow">
+        <div className="rounded-xl bg-ink p-4 text-white shadow-lift">
           <p className="text-[11px] uppercase tracking-[0.18em] opacity-80">Recommended crop</p>
           <p className="mt-1 font-display text-2xl font-bold">🌾 Rice</p>
           <p className="mt-1 text-xs opacity-90">Random Forest · best of 4 models</p>
@@ -139,37 +139,49 @@ export default function Projects() {
     <section id="projects" className="section">
       <div className="container-content">
         <SectionHeader
+          index="03"
           eyebrow="Projects"
-          title="Things I've built"
-          lead="A mix of production software, machine-learning systems, and analytics dashboards across roles and personal work."
+          title="Selected"
+          accent="work."
+          lead="Production software, machine-learning systems and analytics dashboards across roles and personal work."
         />
 
-        <div className="mt-16 space-y-10">
-          {profile.projects.map((p, i) => {
-            const flip = i % 2 === 1;
-            return (
-              <Reveal key={p.title} variant={flip ? "right" : "left"}>
-                <TiltCard maxTilt={2.5}>
-                  <article
-                    className={`card card-hover grid overflow-hidden lg:grid-cols-[1.35fr_1fr] ${
-                      flip ? "lg:[&>*:first-child]:order-2" : ""
-                    }`}
-                  >
-                    <div className="flex flex-col p-7 sm:p-9">
-                      <div className="flex flex-wrap items-center gap-3">
-                        <span className="rounded-full bg-gradient-to-r from-primary to-accent px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white">
-                          {p.label}
-                        </span>
-                        <span className="inline-flex items-center gap-1.5 text-xs font-medium text-muted">
-                          <Calendar size={13} />
-                          {p.period}
-                        </span>
-                      </div>
-                      <h3 className="mt-4 font-display text-2xl font-bold text-text">{p.title}</h3>
-                      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted sm:text-base">
-                        {p.description}
-                      </p>
-                      <div className="mt-6 flex flex-wrap gap-2">
+        <div className="mt-16 grid gap-6 lg:grid-cols-2">
+          {profile.projects.map((p, i) => (
+            <Reveal key={p.title} delay={(i % 2) * 150} variant="up">
+              <TiltCard maxTilt={3} className="h-full">
+                <article className="card card-hover group flex h-full flex-col overflow-hidden">
+                  {/* Visual panel */}
+                  <div className="relative overflow-hidden border-b border-border bg-surfaceAlt p-7">
+                    <div aria-hidden className="dot-bg absolute inset-0" />
+                    <div
+                      aria-hidden
+                      className="absolute -right-10 -top-10 h-40 w-40 bg-accent/20 blur-2xl transition-transform duration-700 group-hover:scale-150 animate-morph"
+                    />
+                    <span className="absolute left-5 top-4 font-display text-6xl font-semibold text-text/[0.06]">
+                      0{i + 1}
+                    </span>
+                    <div className="relative mx-auto max-w-sm transition-transform duration-700 group-hover:-translate-y-1 group-hover:scale-[1.02]">
+                      <Visual kind={p.visual} />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-7 sm:p-8">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+                        {p.label}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 text-xs text-muted">
+                        <Calendar size={13} />
+                        {p.period}
+                      </span>
+                    </div>
+                    <h3 className="mt-3 font-display text-2xl font-semibold text-text">{p.title}</h3>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted sm:text-[15px]">
+                      {p.description}
+                    </p>
+                    <div className="mt-6 flex items-end justify-between gap-4">
+                      <div className="flex flex-wrap gap-2">
                         {p.stack.map((tech) => (
                           <span key={tech} className="chip">
                             {tech}
@@ -180,26 +192,17 @@ export default function Projects() {
                         href={profile.links.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/link mt-6 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-primary"
+                        aria-label={`${p.title} on GitHub`}
+                        className="grid h-11 w-11 flex-shrink-0 place-items-center rounded-full bg-ink text-white transition duration-500 group-hover:rotate-45 group-hover:bg-primary"
                       >
-                        More on GitHub
-                        <ArrowUpRight
-                          size={15}
-                          className="transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
-                        />
+                        <ArrowUpRight size={18} />
                       </a>
                     </div>
-                    <div className="relative flex items-center border-t border-border bg-gradient-to-br from-surfaceAlt to-[#e3ecfb] p-7 lg:border-l lg:border-t-0">
-                      <div aria-hidden className="grid-bg absolute inset-0 opacity-70" />
-                      <div className="relative w-full">
-                        <Visual kind={p.visual} />
-                      </div>
-                    </div>
-                  </article>
-                </TiltCard>
-              </Reveal>
-            );
-          })}
+                  </div>
+                </article>
+              </TiltCard>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

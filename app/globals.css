@@ -5,7 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6rem;
   }
 
   body {
@@ -20,8 +20,8 @@
   }
 
   ::selection {
-    background: rgba(37, 99, 235, 0.18);
-    color: #0f1b2d;
+    background: rgba(245, 158, 11, 0.3);
+    color: #14171f;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -42,7 +42,7 @@
   }
 
   .section {
-    @apply relative py-20 sm:py-24 lg:py-28;
+    @apply relative py-20 sm:py-24 lg:py-32;
   }
 
   .section-tint {
@@ -50,76 +50,99 @@
   }
 
   .section-title {
-    @apply font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-[2.75rem] lg:leading-tight;
+    @apply font-display text-3xl font-semibold tracking-tight text-text sm:text-4xl lg:text-5xl lg:leading-[1.1];
   }
 
-  .section-eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary;
+  /* Italic serif accent word inside headings */
+  .accent-serif {
+    @apply font-serif font-normal italic text-primary;
   }
 
   .section-lead {
-    @apply mt-4 text-base leading-relaxed text-muted sm:text-lg;
+    @apply mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg;
   }
 
   .card {
-    @apply relative rounded-2xl border border-border bg-surface shadow-soft transition duration-300;
+    @apply relative rounded-3xl border border-border bg-surface transition duration-500;
+    box-shadow: 0 1px 2px rgba(20, 23, 31, 0.03), 0 12px 32px -18px rgba(20, 23, 31, 0.14);
   }
   .card-hover:hover {
-    @apply -translate-y-1 border-primary/30 shadow-lift;
+    @apply -translate-y-1.5 border-primary/30 shadow-lift;
   }
 
   .chip {
-    @apply inline-flex items-center rounded-full border border-primary/10 bg-primary/5 px-3 py-1 text-xs font-medium text-primaryDark transition;
+    @apply inline-flex items-center rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-text transition;
   }
   .chip:hover {
-    @apply border-primary/40 bg-primary/10;
+    @apply border-primary/40 text-primary;
   }
 
   .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2;
-    background-image: linear-gradient(120deg, #2563eb 0%, #1d4ed8 40%, #06b6d4 100%);
-    background-size: 200% 200%;
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2;
+    isolation: isolate;
   }
-  .btn-primary:hover {
-    background-position: 100% 50%;
-    box-shadow: 0 16px 36px -12px rgba(37, 99, 235, 0.65);
-  }
-  /* Sheen that sweeps across primary buttons */
-  .btn-primary::after {
+  /* Teal fill that wipes in from the left on hover */
+  .btn-primary::before {
     content: "";
     position: absolute;
     inset: 0;
-    width: 40%;
-    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
-    transform: translateX(-120%);
-    animation: shimmer 3.2s ease-in-out infinite;
+    z-index: -1;
+    background: linear-gradient(110deg, #0f766e, #14b8a6);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-primary:hover::before {
+    transform: scaleX(1);
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface px-5 py-3 text-sm font-semibold text-text shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-text/15 bg-transparent px-6 py-3 text-sm font-semibold text-text transition duration-300 hover:-translate-y-0.5 hover:border-primary hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2;
   }
 
   .icon-tile {
-    @apply grid h-11 w-11 flex-shrink-0 place-items-center rounded-xl text-white shadow-glow;
-    background-image: linear-gradient(135deg, #2563eb, #06b6d4);
+    @apply grid h-12 w-12 flex-shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary transition duration-500;
+  }
+  .group:hover .icon-tile {
+    @apply bg-primary text-white;
   }
 
   /* Scroll-reveal primitive — works with components/effects/Reveal.tsx */
   .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(32px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 1s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
   }
   .reveal-left {
-    transform: translateX(-32px);
+    transform: translateX(-40px);
   }
   .reveal-right {
-    transform: translateX(32px);
+    transform: translateX(40px);
   }
   .reveal-zoom {
     transform: scale(0.94);
+  }
+  /* Curtain reveal: a page-coloured panel wipes upward to uncover the content */
+  .reveal-curtain {
+    opacity: 1;
+    transform: none;
+    position: relative;
+  }
+  .reveal-curtain::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: 30;
+    border-radius: inherit;
+    background: #faf8f4;
+    transform-origin: top;
+    transition: transform 1.2s cubic-bezier(0.77, 0, 0.18, 1);
+    pointer-events: none;
+  }
+  .reveal-curtain.is-visible::after {
+    transform: scaleY(0);
   }
   .reveal.is-visible {
     opacity: 1;
@@ -129,48 +152,32 @@
 
 @layer utilities {
   .text-gradient {
-    background-image: linear-gradient(110deg, #2563eb 0%, #1d4ed8 30%, #06b6d4 70%, #2563eb 100%);
-    background-size: 220% auto;
+    background-image: linear-gradient(100deg, #0f766e 0%, #14b8a6 45%, #f59e0b 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: gradient-x 6s ease infinite;
+    animation: gradient-x 7s ease infinite;
   }
 
-  .grid-bg {
-    background-image: linear-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
-    background-size: 44px 44px;
-    mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 70%);
+  /* Hand-drawn style marker highlight behind a word */
+  .marker {
+    background-image: linear-gradient(transparent 62%, rgba(245, 158, 11, 0.35) 62%, rgba(245, 158, 11, 0.35) 90%, transparent 90%);
+  }
+
+  .dot-bg {
+    background-image: radial-gradient(rgba(20, 23, 31, 0.12) 1px, transparent 1px);
+    background-size: 22px 22px;
+    mask-image: radial-gradient(ellipse at 60% 40%, black 15%, transparent 70%);
+  }
+
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
   }
 
   .glass {
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-  }
-
-  /* Translucent 3D-ish cube used as floating hero decoration */
-  .glass-cube {
-    border: 1.5px solid rgba(37, 99, 235, 0.35);
-    background: linear-gradient(135deg, rgba(147, 197, 253, 0.45), rgba(191, 219, 254, 0.15));
-    box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.7), 0 10px 30px -12px rgba(37, 99, 235, 0.4);
-    backdrop-filter: blur(4px);
-  }
-
-  .gradient-border {
-    position: relative;
-  }
-  .gradient-border::before {
-    content: "";
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.5), rgba(6, 182, 212, 0.5), transparent 60%);
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
   }
 }

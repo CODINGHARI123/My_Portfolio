@@ -1,24 +1,46 @@
 import Reveal from "@/components/effects/Reveal";
 
 type Props = {
+  index: string;
   eyebrow: string;
   title: string;
+  accent?: string; // word(s) rendered in italic serif after the title
   lead?: string;
+  dark?: boolean;
 };
 
-export default function SectionHeader({ eyebrow, title, lead }: Props) {
+// Editorial, left-aligned header: "01 / About" index, big title, lead on the right.
+export default function SectionHeader({ index, eyebrow, title, accent, lead, dark }: Props) {
   return (
-    <Reveal className="mx-auto max-w-3xl text-center">
-      <p className="section-eyebrow">
-        <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-primary to-accent" />
-        {eyebrow}
-      </p>
-      <h2 className="mt-4 section-title">{title}</h2>
-      <span
-        aria-hidden
-        className="mx-auto mt-5 block h-1 w-16 rounded-full bg-gradient-to-r from-primary to-accent"
-      />
-      {lead && <p className="section-lead">{lead}</p>}
-    </Reveal>
+    <div className="grid items-end gap-6 lg:grid-cols-[1.4fr_1fr]">
+      <Reveal>
+        <p
+          className={`flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] ${
+            dark ? "text-teal-300" : "text-primary"
+          }`}
+        >
+          <span className="font-semibold">{index}</span>
+          <span className={`h-px w-10 ${dark ? "bg-teal-300/60" : "bg-primary/50"}`} />
+          {eyebrow}
+        </p>
+        <h2 className={`mt-5 section-title ${dark ? "!text-white" : ""}`}>
+          {title}{" "}
+          {accent && (
+            <span className={`accent-serif ${dark ? "!text-accent" : ""}`}>{accent}</span>
+          )}
+        </h2>
+      </Reveal>
+      {lead && (
+        <Reveal delay={150}>
+          <p
+            className={`text-base leading-relaxed lg:text-right ${
+              dark ? "text-white/60" : "text-muted"
+            }`}
+          >
+            {lead}
+          </p>
+        </Reveal>
+      )}
+    </div>
   );
 }

@@ -5,20 +5,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#f7f9fc",
+        background: "#faf8f4",
         surface: "#ffffff",
-        surfaceAlt: "#eef3fb",
-        border: "#e2e8f0",
-        primary: "#2563eb",
-        primaryDark: "#1d4ed8",
-        accent: "#06b6d4",
-        accent2: "#6366f1",
-        text: "#0f1b2d",
-        muted: "#5b6b82",
+        surfaceAlt: "#f3efe7",
+        border: "#e8e2d6",
+        ink: "#10151c",
+        primary: "#0f766e",
+        primaryDark: "#115e59",
+        accent: "#f59e0b",
+        accent2: "#e76f51",
+        text: "#14171f",
+        muted: "#5f6470",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-grotesk)", "var(--font-inter)", "sans-serif"],
+        sans: ["var(--font-jakarta)", "system-ui", "sans-serif"],
+        display: ["var(--font-sora)", "var(--font-jakarta)", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
         mono: ["var(--font-jetbrains)", "ui-monospace", "monospace"],
       },
       maxWidth: {
@@ -26,8 +28,8 @@ const config: Config = {
       },
       boxShadow: {
         soft: "0 1px 2px rgba(15,27,45,0.04), 0 8px 24px -12px rgba(15,27,45,0.12)",
-        lift: "0 2px 4px rgba(15,27,45,0.04), 0 24px 48px -20px rgba(37,99,235,0.28)",
-        glow: "0 10px 30px -10px rgba(37,99,235,0.55)",
+        lift: "0 2px 4px rgba(20,23,31,0.04), 0 24px 48px -20px rgba(15,118,110,0.30)",
+        glow: "0 10px 30px -10px rgba(15,118,110,0.55)",
       },
       keyframes: {
         "fade-up": {
@@ -87,6 +89,15 @@ const config: Config = {
           "0%": { strokeDashoffset: "300" },
           "100%": { strokeDashoffset: "0" },
         },
+        orbit: {
+          "0%": { transform: "rotate(0deg) translateX(var(--r)) rotate(0deg)" },
+          "100%": { transform: "rotate(360deg) translateX(var(--r)) rotate(-360deg)" },
+        },
+        morph: {
+          "0%, 100%": { borderRadius: "42% 58% 70% 30% / 45% 45% 55% 55%" },
+          "34%": { borderRadius: "70% 30% 46% 54% / 30% 29% 71% 70%" },
+          "67%": { borderRadius: "28% 72% 38% 62% / 61% 55% 45% 39%" },
+        },
         "bar-grow": {
           "0%": { transform: "scaleY(0.25)" },
           "100%": { transform: "scaleY(1)" },
@@ -107,6 +118,8 @@ const config: Config = {
         shimmer: "shimmer 2.8s ease-in-out infinite",
         "grow-x": "grow-x 2.2s ease-in-out infinite alternate",
         dash: "dash 3s ease-in-out infinite alternate",
+        orbit: "orbit 22s linear infinite",
+        morph: "morph 12s ease-in-out infinite",
         "bar-grow": "bar-grow 1.4s ease-in-out infinite alternate",
       },
     },

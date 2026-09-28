@@ -1,18 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Instrument_Serif, JetBrains_Mono, Plus_Jakarta_Sans, Sora } from "next/font/google";
 import "./globals.css";
 import ScrollProgress from "@/components/effects/ScrollProgress";
 import SectionNav from "@/components/effects/SectionNav";
 
-const inter = Inter({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-jakarta",
   display: "swap",
 });
 
-const grotesk = Space_Grotesk({
+const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-grotesk",
+  variable: "--font-sora",
+  display: "swap",
+});
+
+const serif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -70,7 +78,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f7f9fc",
+  themeColor: "#faf8f4",
   width: "device-width",
   initialScale: 1,
 };
@@ -79,9 +87,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${grotesk.variable} ${jetbrains.variable}`}
+      className={`${jakarta.variable} ${sora.variable} ${serif.variable} ${jetbrains.variable}`}
     >
       <body className="relative overflow-x-hidden">
+        <div aria-hidden className="noise pointer-events-none fixed inset-0 z-[80]" />
         <ScrollProgress />
         <SectionNav />
         {children}

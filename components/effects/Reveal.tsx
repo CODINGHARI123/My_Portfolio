@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode;
   as?: "div" | "section" | "article" | "li" | "header" | "main";
   delay?: number;
-  variant?: "up" | "left" | "right" | "zoom";
+  variant?: "up" | "left" | "right" | "zoom" | "curtain";
   className?: string;
 };
 
@@ -15,6 +15,7 @@ const VARIANT_CLASS = {
   left: "reveal-left",
   right: "reveal-right",
   zoom: "reveal-zoom",
+  curtain: "reveal-curtain",
 };
 
 export default function Reveal({

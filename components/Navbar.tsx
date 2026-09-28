@@ -6,20 +6,21 @@ import { ArrowUpRight } from "@/components/Icons";
 
 const links = [
   { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
+  { href: "#experience", label: "Work" },
   { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
   { href: "#training", label: "Training" },
   { href: "#education", label: "Education" },
 ];
 
+// Floating capsule navbar with a sliding active indicator.
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -40,27 +41,22 @@ export default function Navbar() {
     };
   }, []);
 
-  const [first, ...rest] = profile.name.split(" ");
-
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "border-b border-border/80 bg-white/80 shadow-soft backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
-      }`}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
       <nav
-        className={`container-content flex items-center justify-between transition-all duration-500 ${
-          scrolled ? "h-16" : "h-20"
+        className={`mx-auto flex max-w-5xl items-center justify-between rounded-full border px-3 py-2 transition-all duration-500 ${
+          scrolled
+            ? "border-border bg-white/80 shadow-lift backdrop-blur-xl"
+            : "border-transparent bg-transparent"
         }`}
       >
-        <a href="#top" className="group flex items-center gap-2.5">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-primary to-accent font-display text-xs font-bold text-white shadow-glow transition-transform duration-500 group-hover:rotate-[360deg]">
-            {profile.initials}
+        <a href="#top" className="group flex items-center gap-2.5 pl-1">
+          <span className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-full bg-ink font-display text-[11px] font-bold text-white">
+            <span className="absolute inset-0 origin-bottom scale-y-0 bg-primary transition-transform duration-500 group-hover:scale-y-100" />
+            <span className="relative">{profile.initials}</span>
           </span>
-          <span className="hidden font-display text-base font-bold text-text sm:inline">
-            {first} <span className="text-gradient">{rest.join(" ")}</span>
+          <span className="hidden font-display text-sm font-semibold text-text sm:inline">
+            SreeHari<span className="text-accent">.</span>
           </span>
         </a>
 
@@ -71,16 +67,16 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`group relative rounded-lg px-3 py-2 text-sm font-medium transition ${
-                    isActive ? "text-primary" : "text-muted hover:text-text"
+                  className={`relative block rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+                    isActive ? "text-white" : "text-muted hover:text-text"
                   }`}
                 >
-                  {link.label}
                   <span
-                    className={`absolute inset-x-3 -bottom-0.5 h-0.5 origin-left rounded-full bg-gradient-to-r from-primary to-accent transition-transform duration-300 ${
-                      isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                    className={`absolute inset-0 -z-10 rounded-full bg-ink transition-all duration-500 ${
+                      isActive ? "scale-100 opacity-100" : "scale-75 opacity-0"
                     }`}
                   />
+                  {link.label}
                 </a>
               </li>
             );
@@ -88,34 +84,34 @@ export default function Navbar() {
         </ul>
 
         <a href="#contact" className="btn-primary hidden !py-2.5 lg:inline-flex">
-          Contact
+          Let&apos;s talk
           <ArrowUpRight size={15} />
         </a>
 
         <button
           aria-label="Toggle menu"
           aria-expanded={open}
-          className="rounded-xl border border-border bg-surface p-2 text-text shadow-soft lg:hidden"
+          className="grid h-10 w-10 place-items-center rounded-full bg-ink text-white lg:hidden"
           onClick={() => setOpen((v) => !v)}
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {open ? <path d="M18 6 6 18M6 6l12 12" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            {open ? <path d="M18 6 6 18M6 6l12 12" /> : <path d="M4 8h16M8 16h12" />}
           </svg>
         </button>
       </nav>
 
       <div
-        className={`overflow-hidden border-t border-border bg-white/95 backdrop-blur-xl transition-[max-height,opacity] duration-500 lg:hidden ${
-          open ? "max-h-96 opacity-100" : "max-h-0 border-transparent opacity-0"
+        className={`mx-auto mt-2 max-w-5xl overflow-hidden rounded-3xl border bg-white/95 shadow-lift backdrop-blur-xl transition-all duration-500 lg:hidden ${
+          open ? "max-h-96 border-border opacity-100" : "max-h-0 border-transparent opacity-0"
         }`}
       >
-        <ul className="container-content flex flex-col gap-1 py-4">
+        <ul className="flex flex-col gap-1 p-3">
           {[...links, { href: "#contact", label: "Contact" }].map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2 text-sm font-medium text-muted hover:bg-surfaceAlt hover:text-primary"
+                className="block rounded-2xl px-4 py-2.5 text-sm font-medium text-muted hover:bg-surfaceAlt hover:text-primary"
               >
                 {link.label}
               </a>
