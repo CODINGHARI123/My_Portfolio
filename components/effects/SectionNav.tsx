@@ -23,7 +23,6 @@ export default function SectionNav() {
 
     const obs = new IntersectionObserver(
       (entries) => {
-        // Use the entry whose top is closest to the upper third of viewport.
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort(
@@ -43,7 +42,7 @@ export default function SectionNav() {
   return (
     <nav
       aria-label="Section navigation"
-      className="pointer-events-none fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 xl:block"
+      className="pointer-events-none fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 2xl:block"
     >
       <ul className="pointer-events-auto flex flex-col items-end gap-3">
         {sections.map((s) => {
@@ -56,7 +55,7 @@ export default function SectionNav() {
                 className="group flex items-center gap-3"
               >
                 <span
-                  className={`text-[10px] font-mono uppercase tracking-[0.2em] transition-all duration-300 ${
+                  className={`text-[10px] font-semibold uppercase tracking-[0.2em] transition-all duration-300 ${
                     isActive
                       ? "translate-x-0 text-primary opacity-100"
                       : "translate-x-1 text-muted opacity-0 group-hover:opacity-100"
@@ -65,23 +64,12 @@ export default function SectionNav() {
                   {s.label}
                 </span>
                 <span
-                  className={`relative grid place-items-center transition-all duration-300 ${
-                    isActive ? "h-3.5 w-3.5" : "h-2.5 w-2.5"
+                  className={`block rounded-full transition-all duration-300 ${
+                    isActive
+                      ? "h-6 w-1.5 bg-gradient-to-b from-primary to-accent"
+                      : "h-1.5 w-1.5 bg-muted/40 group-hover:bg-primary/70"
                   }`}
-                >
-                  <span
-                    className={`absolute inset-0 rounded-full border transition-all duration-300 ${
-                      isActive
-                        ? "border-primary"
-                        : "border-border group-hover:border-primary/70"
-                    }`}
-                  />
-                  <span
-                    className={`rounded-full bg-primary transition-all duration-300 ${
-                      isActive ? "h-1.5 w-1.5 opacity-100" : "h-1 w-1 opacity-60"
-                    }`}
-                  />
-                </span>
+                />
               </a>
             </li>
           );

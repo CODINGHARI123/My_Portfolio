@@ -47,11 +47,11 @@ export default function RotatingTitle({
 
   return (
     <span className={className}>
-      <span className="text-gradient-soft">{text}</span>
+      <span className="text-gradient">{text}</span>
       <span
         aria-hidden
         className="ml-0.5 inline-block w-[2px] translate-y-[2px] bg-primary align-middle animate-caret"
-        style={{ height: "0.9em" }}
+        style={{ height: "0.95em" }}
       />
     </span>
   );

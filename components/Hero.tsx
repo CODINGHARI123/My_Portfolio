@@ -1,8 +1,9 @@
 import { profile } from "@/lib/profile";
-import NeuralBackground from "@/components/effects/NeuralBackground";
-import GlitchText from "@/components/effects/GlitchText";
 import RotatingTitle from "@/components/effects/RotatingTitle";
 import Marquee from "@/components/effects/Marquee";
+import CountUp from "@/components/effects/CountUp";
+import TiltCard from "@/components/effects/TiltCard";
+import { Activity, ArrowRight, Brain, Github, Mail, MapPin } from "@/components/Icons";
 
 const ROLES = [
   "Software Developer",
@@ -31,89 +32,110 @@ const MARQUEE_ITEMS = [
   "Linux",
 ];
 
+const STATS = [
+  { to: 1, suffix: "+", label: "Years Experience" },
+  { to: 4, suffix: "", label: "Projects Built" },
+  { to: 7.83, suffix: "", decimals: 2, label: "B.Tech CGPA" },
+];
+
 export default function Hero() {
+  const [first, ...rest] = profile.name.split(" ");
+
   return (
-    <section
-      id="top"
-      className="relative isolate overflow-hidden pt-32 pb-12 sm:pt-40 sm:pb-16"
-    >
-      {/* Layered backdrop */}
-      <NeuralBackground />
+    <section id="top" className="relative isolate overflow-hidden pt-28 sm:pt-32 lg:pt-36">
+      {/* Backdrop: grid + soft gradient blobs */}
+      <div aria-hidden className="grid-bg pointer-events-none absolute inset-0 -z-10" />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/30 via-background/40 to-background"
+        className="pointer-events-none absolute -left-40 top-24 -z-10 h-[26rem] w-[26rem] rounded-full bg-accent/15 blur-3xl animate-blob"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl animate-blob"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-0 top-1/3 h-80 w-80 rounded-full bg-accent/15 blur-3xl animate-blob"
-        style={{ animationDelay: "3s" }}
+        className="pointer-events-none absolute -right-24 -top-24 -z-10 h-[30rem] w-[30rem] rounded-full bg-primary/15 blur-3xl animate-blob"
+        style={{ animationDelay: "4s" }}
       />
 
-      <div className="container-content relative">
-        <div className="mx-auto max-w-3xl text-center">
-          {/* Status badge */}
+      {/* Floating decorations */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 hidden md:block">
+        <div className="glass-cube absolute left-[40%] top-24 h-16 w-16 rounded-xl animate-float-rotate" />
+        <div
+          className="glass-cube absolute left-[6%] top-[62%] h-10 w-10 rounded-lg animate-float-rotate"
+          style={{ animationDelay: "2s" }}
+        />
+        <div className="absolute right-[8%] top-28 h-20 w-20 rounded-full border-[5px] border-accent/30 animate-float" />
+        <div
+          className="absolute right-[18%] bottom-40 h-5 w-5 rounded-full bg-gradient-to-br from-primary/60 to-accent/60 animate-float"
+          style={{ animationDelay: "1.5s" }}
+        />
+        <span className="absolute left-[30%] top-[30%] font-mono text-2xl font-bold text-primary/20 animate-float">
+          &lt;/&gt;
+        </span>
+        <span
+          className="absolute left-[33%] top-[70%] font-mono text-2xl font-bold text-accent/30 animate-float"
+          style={{ animationDelay: "2.5s" }}
+        >
+          {"{ }"}
+        </span>
+        <span
+          className="absolute right-[42%] bottom-24 font-mono text-xl font-bold text-primary/20 animate-float"
+          style={{ animationDelay: "1s" }}
+        >
+          ( )
+        </span>
+      </div>
+
+      <div className="container-content grid items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
+        {/* Left column — intro */}
+        <div>
           <div
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.22em] text-muted opacity-0 animate-fade-in backdrop-blur"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs font-medium text-text shadow-soft animate-fade-in"
             style={{ animationDelay: "60ms" }}
           >
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
-            Available for work
+            Open to opportunities · {profile.location.split(",")[0]}
           </div>
 
-          <p
-            className="mt-6 section-eyebrow opacity-0 animate-fade-in"
-            style={{ animationDelay: "180ms" }}
-          >
-            &gt; init portfolio --user sree_hari
-          </p>
-
           <h1
-            className="mt-4 font-mono text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl opacity-0 animate-fade-up"
-            style={{ animationDelay: "260ms" }}
+            className="mt-6 font-display text-[2.6rem] font-bold leading-[1.05] tracking-tight text-text sm:text-6xl lg:text-[4.25rem] animate-fade-up"
+            style={{ animationDelay: "160ms" }}
           >
-            <span className="text-gradient">
-              <GlitchText text={profile.name} duration={1600} />
-            </span>
+            Hi, I&apos;m <span className="text-gradient">{first}</span>
+            <br />
+            <span className="text-gradient">{rest.join(" ")}</span>
           </h1>
 
-          <h2
-            className="mt-6 min-h-[2.5rem] text-xl font-medium text-muted sm:text-2xl opacity-0 animate-fade-up"
-            style={{ animationDelay: "520ms" }}
+          <p
+            className="mt-6 flex min-h-[2.25rem] flex-wrap items-baseline gap-x-3 font-display text-xl font-semibold sm:text-2xl animate-fade-up"
+            style={{ animationDelay: "320ms" }}
           >
-            <span className="text-muted">I am a </span>
+            <span className="text-sm font-medium text-muted">I&apos;m a</span>
             <RotatingTitle phrases={ROLES} />
-          </h2>
+          </p>
 
           <p
-            className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-muted sm:text-lg opacity-0 animate-fade-up"
-            style={{ animationDelay: "680ms" }}
+            className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg animate-fade-up"
+            style={{ animationDelay: "440ms" }}
           >
-            {profile.tagline}
+            I build <strong className="font-semibold text-text">production software</strong>{" "}
+            and <strong className="font-semibold text-text">data-driven systems</strong> —
+            from cross-platform network diagnostic tools to ML models, NLP pipelines, and
+            analytics dashboards.
           </p>
 
           <div
-            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row opacity-0 animate-fade-up"
-            style={{ animationDelay: "820ms" }}
+            className="mt-8 flex flex-wrap gap-3 animate-fade-up"
+            style={{ animationDelay: "560ms" }}
           >
-            <a href="#contact" className="btn-primary">
-              Contact Me
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
+            <a href="#projects" className="btn-primary">
+              View My Work
+              <ArrowRight size={16} />
+            </a>
+            <a href="#contact" className="btn-ghost">
+              Get in Touch
+              <Mail size={16} />
             </a>
             <a
               href={profile.links.github}
@@ -121,34 +143,119 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="btn-ghost"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.74.08-.74 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.12-.31-.54-1.54.12-3.2 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.89.12 3.2.77.84 1.24 1.92 1.24 3.23 0 4.62-2.8 5.65-5.48 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z" />
-              </svg>
-              View GitHub
+              <Github size={16} />
+              GitHub
             </a>
           </div>
 
-          {/* Scroll cue */}
-          <div
-            className="mt-16 flex justify-center opacity-0 animate-fade-in"
-            style={{ animationDelay: "1100ms" }}
+          <dl
+            className="mt-10 flex flex-wrap gap-x-10 gap-y-4 animate-fade-up"
+            style={{ animationDelay: "680ms" }}
           >
-            <a
-              href="#about"
-              aria-label="Scroll to about"
-              className="group flex flex-col items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-muted transition hover:text-primary"
-            >
-              Scroll
-              <span className="grid h-9 w-5 place-items-start rounded-full border border-border p-1 transition group-hover:border-primary">
-                <span className="h-1.5 w-1 animate-bounce rounded-full bg-primary/80" />
-              </span>
-            </a>
+            {STATS.map((s) => (
+              <div key={s.label}>
+                <dt className="sr-only">{s.label}</dt>
+                <dd className="font-display text-3xl font-bold text-gradient">
+                  <CountUp to={s.to} suffix={s.suffix} decimals={s.decimals} />
+                </dd>
+                <p className="mt-1 text-xs font-medium text-muted">{s.label}</p>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        {/* Right column — profile card */}
+        <div className="relative mx-auto w-full max-w-md animate-scale-in" style={{ animationDelay: "300ms" }}>
+          {/* Floating badges */}
+          <div className="glass absolute -left-4 -top-6 z-20 flex items-center gap-2 rounded-xl border border-border px-3 py-2 text-xs font-semibold text-text shadow-lift animate-float sm:-left-10">
+            <Activity size={14} className="text-primary" />
+            Real-time
           </div>
+          <div
+            className="glass absolute -bottom-5 -right-3 z-20 flex items-center gap-2 rounded-xl border border-border px-3 py-2 text-xs font-semibold text-text shadow-lift animate-float sm:-right-8"
+            style={{ animationDelay: "2s" }}
+          >
+            <Brain size={14} className="text-accent" />
+            ML &amp; NLP
+          </div>
+
+          {/* Rotating dashed ring behind card */}
+          <div
+            aria-hidden
+            className="absolute -inset-6 -z-10 rounded-[2rem] border-2 border-dashed border-primary/15 animate-spin-slow"
+            style={{ animationDuration: "60s" }}
+          />
+
+          <TiltCard maxTilt={7}>
+            <div className="card gradient-border overflow-hidden p-7 shadow-lift">
+              <div
+                aria-hidden
+                className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 blur-2xl"
+              />
+              <div className="relative grid h-[4.5rem] w-[4.5rem] place-items-center rounded-2xl bg-gradient-to-br from-primary to-accent font-display text-2xl font-bold text-white shadow-glow">
+                {profile.initials}
+                <span className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full border-[3px] border-white bg-emerald-500" />
+              </div>
+
+              <h3 className="mt-5 font-display text-xl font-bold text-text">{profile.name}</h3>
+              <p className="mt-1 text-sm font-semibold text-primary">
+                Software Developer @ Bixbi Systems
+              </p>
+
+              <div className="my-5 h-px bg-border" />
+
+              <ul className="space-y-3 text-sm text-muted">
+                <li className="flex items-center gap-2.5">
+                  <MapPin size={16} className="text-accent" />
+                  {profile.location}
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Mail size={16} className="text-accent" />
+                  <a href={profile.links.email} className="truncate hover:text-primary">
+                    {profile.email}
+                  </a>
+                </li>
+              </ul>
+
+              {/* Mini live-signal visual */}
+              <div className="mt-5 flex h-12 items-end gap-1 rounded-xl bg-surfaceAlt p-2">
+                {[40, 65, 50, 80, 55, 90, 70, 45, 85, 60, 75, 95, 50, 70].map((h, i) => (
+                  <span
+                    key={i}
+                    className="flex-1 origin-bottom rounded-sm bg-gradient-to-t from-primary to-accent animate-bar-grow"
+                    style={{ height: `${h}%`, animationDelay: `${i * 90}ms` }}
+                  />
+                ))}
+              </div>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {["Python", "SQL", "Django", "NLP"].map((t) => (
+                  <span key={t} className="chip">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </TiltCard>
         </div>
       </div>
 
-      {/* Tech marquee — full bleed under hero */}
-      <div className="relative mt-16 border-y border-border/70 bg-surface/40 py-5 backdrop-blur-sm">
+      {/* Scroll cue */}
+      <div className="mt-16 flex justify-center animate-fade-in" style={{ animationDelay: "1000ms" }}>
+        <a
+          href="#about"
+          aria-label="Scroll to about"
+          className="group flex flex-col items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-muted transition hover:text-primary"
+        >
+          Scroll
+          <span className="grid h-9 w-5 place-items-start rounded-full border-2 border-border p-1 transition group-hover:border-primary">
+            <span className="h-1.5 w-1 animate-bounce rounded-full bg-primary" />
+          </span>
+        </a>
+      </div>
+
+      {/* Tech marquee */}
+      <div className="relative mt-12 border-y border-border bg-surface py-5">
         <Marquee items={MARQUEE_ITEMS} />
       </div>
     </section>

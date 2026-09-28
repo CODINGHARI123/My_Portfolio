@@ -1,12 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import CursorSpotlight from "@/components/effects/CursorSpotlight";
+import ScrollProgress from "@/components/effects/ScrollProgress";
 import SectionNav from "@/components/effects/SectionNav";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const grotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-grotesk",
   display: "swap",
 });
 
@@ -16,7 +22,7 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = "https://yanamala-sree-hari.vercel.app";
+const siteUrl = "https://codinghari123.github.io/My_Portfolio";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -64,23 +70,21 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#070b18",
+  themeColor: "#f7f9fc",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrains.variable}`}>
-      <body className="relative">
-        {/* Decorative dot grid behind everything */}
-        <div
-          aria-hidden
-          className="dot-grid pointer-events-none fixed inset-0 z-0"
-        />
-        <CursorSpotlight />
+    <html
+      lang="en"
+      className={`${inter.variable} ${grotesk.variable} ${jetbrains.variable}`}
+    >
+      <body className="relative overflow-x-hidden">
+        <ScrollProgress />
         <SectionNav />
-        <div className="relative z-10">{children}</div>
+        {children}
       </body>
     </html>
   );

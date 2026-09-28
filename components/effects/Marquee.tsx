@@ -4,17 +4,16 @@ type Props = {
 };
 
 // Pure-CSS infinite marquee. Items duplicated so animation loops seamlessly.
-export default function Marquee({ items, speed = 38 }: Props) {
+export default function Marquee({ items, speed = 40 }: Props) {
   return (
     <div className="group relative overflow-hidden">
-      {/* Edge fades */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent"
+        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-surface to-transparent"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent"
+        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-surface to-transparent"
       />
 
       <div
@@ -24,10 +23,10 @@ export default function Marquee({ items, speed = 38 }: Props) {
         {[...items, ...items].map((it, i) => (
           <span
             key={i}
-            className="flex shrink-0 items-center gap-3 font-mono text-sm text-muted"
+            className="flex shrink-0 items-center gap-3 font-display text-sm font-semibold text-muted"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-primary/70" />
-            <span className="tracking-wider uppercase">{it}</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-primary to-accent" />
+            <span className="uppercase tracking-wider">{it}</span>
           </span>
         ))}
       </div>

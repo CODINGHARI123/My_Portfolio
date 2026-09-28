@@ -66,6 +66,7 @@ export const profile = {
         "Implemented real-time network health features: RF parameter monitoring (signal strength), iPerf-based data speed testing, and ping-based connectivity stability checks.",
         "Ensured cross-platform accessibility so field engineers can use the tool effectively across mobile and desktop environments.",
       ],
+      tags: ["Mobile (APK)", "Windows Installer", "RF / Signal", "iPerf", "Ping"],
     },
     {
       company: "Bixbi Systems",
@@ -77,11 +78,14 @@ export const profile = {
         "Collaborated with the development team on integrating platform-specific components and contributed to internal tooling and operational workflows.",
         "Gained hands-on experience with network diagnostics, cross-platform development, and real-world software deployment pipelines.",
       ],
+      tags: ["Testing", "Cross-platform", "Internal Tooling"],
     },
   ],
   projects: [
     {
       title: "COTS — Network Diagnostic Tool",
+      label: "Professional Work",
+      visual: "network",
       period: "Bixbi Systems · 2025",
       stack: ["Python", "Android APK", "Windows Installer", "iPerf"],
       description:
@@ -89,6 +93,8 @@ export const profile = {
     },
     {
       title: "Sentiment Analysis on Amazon Reviews",
+      label: "NLP · Deployed Flask App",
+      visual: "sentiment",
       period: "Apr 2025 — May 2025",
       stack: ["NLP", "Python", "Flask", "Scikit-learn"],
       description:
@@ -96,6 +102,8 @@ export const profile = {
     },
     {
       title: "Crop Recommendation System",
+      label: "Machine Learning",
+      visual: "crop",
       period: "Aug 2024 — Oct 2024",
       stack: ["Machine Learning", "Python", "Scikit-learn"],
       description:
@@ -103,6 +111,8 @@ export const profile = {
     },
     {
       title: "Blink-it Sales Analysis",
+      label: "Data Analytics · Power BI",
+      visual: "dashboard",
       period: "Oct 2023 — Nov 2023",
       stack: ["Power BI", "Data Analysis"],
       description:

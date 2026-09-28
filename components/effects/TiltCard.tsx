@@ -11,7 +11,7 @@ type Props = {
 export default function TiltCard({
   children,
   className = "",
-  maxTilt = 8,
+  maxTilt = 6,
 }: Props) {
   const wrapRef = useRef<HTMLDivElement | null>(null);
 
@@ -45,15 +45,15 @@ export default function TiltCard({
       onMouseLeave={reset}
       className={`group relative transition-transform duration-200 ease-out [transform-style:preserve-3d] ${className}`}
     >
+      {children}
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 z-10 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
           background:
-            "radial-gradient(420px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(56, 189, 248, 0.18), transparent 55%)",
+            "radial-gradient(380px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(37, 99, 235, 0.08), transparent 60%)",
         }}
       />
-      {children}
     </div>
   );
 }
