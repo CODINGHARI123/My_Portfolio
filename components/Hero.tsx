@@ -18,8 +18,6 @@ const MARQUEE_ITEMS = [
   "Machine Learning",
   "NLP",
   "Scikit-learn",
-  "PySpark",
-  "Hadoop",
   "Hive",
   "Power BI",
   "Tableau",

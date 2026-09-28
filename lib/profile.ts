@@ -41,7 +41,7 @@ export const profile = {
     },
     {
       title: "Big Data & Databases",
-      items: ["Hadoop", "Apache Spark", "Apache Hive", "MySQL", "PostgreSQL"],
+      items: ["Apache Hive", "MySQL", "PostgreSQL"],
     },
     {
       title: "Visualization & Reporting",

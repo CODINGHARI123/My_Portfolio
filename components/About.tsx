@@ -16,8 +16,8 @@ const highlights = [
   },
   {
     icon: Database,
-    title: "Big data & SQL",
-    body: "Hadoop, Spark and Hive pipelines backed by MySQL and PostgreSQL.",
+    title: "Databases & SQL",
+    body: "Querying and modelling data with Apache Hive, MySQL and PostgreSQL.",
   },
   {
     icon: Chart,
